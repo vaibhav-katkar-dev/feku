@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Crush Name Generator ❤️</title>
+    <meta name="description" content="Science + Logic based crush prediction. Just for fun!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: bold;
+            width: 100%;
+        }
+        .btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+        .progress-text {
+            margin: 15px 0;
+            font-size: 14px;
+            color: #888;
+            font-weight: bold;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .hidden {
+            display: none;
+        }
+        .result-name {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .share {
+            margin-top: 25px;
+        }
+        .share .btn {
+            margin: 8px 5px;
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+        .btn-whatsapp {
+            background: #25d366;
+        }
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+        }
+        .btn-copy {
+            background: #e4405f;
+        }
+        .btn-copy:hover {
+            background: #d32f4d;
+        }
+        .ad-placeholder {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            color: #999;
+            border: 2px dashed #ddd;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        .input-group {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: all 0.3s;
+        }
+        .step-dot.active {
+            background: #667eea;
+            transform: scale(1.3);
+        }
+        .step-dot.completed {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ad-placeholder">Advertisement Space</div>
+
+        <!-- Intro Page -->
+        <div id="intro" class="step">
+            <h1>❤️ College Crush Name Generator</h1>
+            <p>Science + Logic based crush prediction</p>
+            <p style="font-size: 14px; color: #999;">(Just for fun 😄)</p>
+            <button class="btn" onclick="goToStep1()">Start Calculation</button>
+        </div>
+
+        <!-- Step 1: Gender -->
+        <div id="step1" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <h1>You Are?</h1>
+            <p class="progress-text">Step 1 of 6</p>
+            <div class="input-group">
+                <label>Select Your Gender</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male (Boy) 👦</option>
+                    <option value="female">Female (Girl) 👧</option>
+                </select>
+                <div id="genderError" class="error hidden">Please select your gender</div>
+            </div>
+            <button class="btn" onclick="goToStep2()">Next</button>
+        </div>
+
+        <!-- Step 2: Name -->
+        <div id="step2" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <h1>What's Your Name?</h1>
+            <p class="progress-text">Step 2 of 6</p>
+            <div class="input-group">
+                <input type="text" id="name" placeholder="Enter your full name">
+                <div id="nameError" class="error hidden">Please enter at least 2 characters</div>
+            </div>
+            <button class="btn" onclick="goToStep3()">Next</button>
+        </div>
+
+        <!-- Step 3: College -->
+        <div id="step3" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <h1>Your College Name?</h1>
+            <p class="progress-text">Step 3 of 6</p>
+            <div class="input-group">
+                <input type="text" id="college" placeholder="e.g., Delhi University">
+                <div id="collegeError" class="error hidden">Please enter your college name</div>
+            </div>
+            <button class="btn" onclick="goToStep4()">Next</button>
+        </div>
+
+        <!-- Step 4: Department -->
+        <div id="step4" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <h1>Your Department?</h1>
+            <p class="progress-text">Step 4 of 6</p>
+            <div class="input-group">
+                <input type="text" id="department" placeholder="e.g., Computer Science">
+                <div id="deptError" class="error hidden">Please enter your department</div>
+            </div>
+            <button class="btn" onclick="goToStep5()">Next</button>
+        </div>
+
+        <!-- Step 5: Birthdate -->
+        <div id="step5" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+            </div>
+            <h1>Your Birth Date?</h1>
+            <p class="progress-text">Step 5 of 6</p>
+            <div class="input-group">
+                <label>Format: DD/MM (Day/Month)</label>
+                <input type="text" id="birthdate" placeholder="15/08" maxlength="5">
+                <div id="birthdateError" class="error hidden">Enter valid date (e.g., 15/08)</div>
+            </div>
+            <button class="btn" onclick="goToStep6()">Next</button>
+        </div>
+
+        <!-- Step 6: Crush Letter -->
+        <div id="step6" class="step hidden">
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+            </div>
+            <h1>Crush's First Letter?</h1>
+            <p class="progress-text">Step 6 of 6</p>
+            <div class="input-group">
+                <label>Select the first letter of your crush's name</label>
+                <select id="crushLetter">
+                    <option value="">Select A-Z</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                    <option value="K">K</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="N">N</option>
+                    <option value="O">O</option>
+                    <option value="P">P</option>
+                    <option value="Q">Q</option>
+                    <option value="R">R</option>
+                    <option value="S">S</option>
+                    <option value="T">T</option>
+                    <option value="U">U</option>
+                    <option value="V">V</option>
+                    <option value="W">W</option>
+                    <option value="X">X</option>
+                    <option value="Y">Y</option>
+                    <option value="Z">Z</option>
+                </select>
+                <div id="letterError" class="error hidden">Please select a letter</div>
+            </div>
+            <button class="btn" onclick="startCalculation()">Calculate Crush Name</button>
+        </div>
+
+        <!-- Calculation Screen -->
+        <div id="calculation" class="step hidden">
+            <h1>Calculating Your Crush...</h1>
+            <div class="loading" style="display: block;">
+                <p id="calcText">Analyzing name patterns...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p style="color: #999; font-size: 14px;">Please wait...</p>
+            </div>
+        </div>
+
+        <!-- Result Page -->
+        <div id="result" class="step hidden">
+            <h1>Your College Crush is ❤️</h1>
+            <div class="result-name" id="crushName"></div>
+            <p>This result is based on name vibration analysis and academic pattern matching.</p>
+            <p style="font-size: 14px; color: #999; margin-top: 10px;">Don't worry... ye sirf fun ke liye hai 😄</p>
+            
+            <button class="btn" onclick="reset()" style="margin-top: 20px;">Try Again</button>
+            
+            <div class="share">
+                <p style="font-weight: bold;">👇 Share with your friends</p>
+                <button class="btn btn-whatsapp" onclick="shareWhatsApp()">📱 WhatsApp</button>
+                <button class="btn btn-copy" onclick="copyLink()">📋 Copy Link</button>
+            </div>
+            
+            <div class="ad-placeholder">Advertisement Space</div>
+        </div>
+    </div>
+
+    <script>
+        function hideAll() {
+            document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
+        }
+
+        function show(stepId) {
+            document.getElementById(stepId).classList.remove('hidden');
+        }
+
+        function goToStep1() {
+            hideAll();
+            show('step1');
+        }
+
+        function goToStep2() {
+            const gender = document.getElementById('gender').value;
+            document.getElementById('genderError').classList.add('hidden');
+            
+            if (!gender) {
+                document.getElementById('genderError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('step2');
+            document.getElementById('name').focus();
+        }
+
+        function goToStep3() {
+            const name = document.getElementById('name').value.trim();
+            document.getElementById('nameError').classList.add('hidden');
+            
+            if (name.length < 2) {
+                document.getElementById('nameError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('step3');
+            document.getElementById('college').focus();
+        }
+
+        function goToStep4() {
+            const college = document.getElementById('college').value.trim();
+            document.getElementById('collegeError').classList.add('hidden');
+            
+            if (college.length < 2) {
+                document.getElementById('collegeError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('step4');
+            document.getElementById('department').focus();
+        }
+
+        function goToStep5() {
+            const department = document.getElementById('department').value.trim();
+            document.getElementById('deptError').classList.add('hidden');
+            
+            if (department.length < 2) {
+                document.getElementById('deptError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('step5');
+            document.getElementById('birthdate').focus();
+        }
+
+        function goToStep6() {
+            const birthdate = document.getElementById('birthdate').value.trim();
+            document.getElementById('birthdateError').classList.add('hidden');
+            
+            const datePattern = /^(\d{1,2})\/(\d{1,2})$/;
+            const dateMatch = birthdate.match(datePattern);
+            
+            if (!dateMatch) {
+                document.getElementById('birthdateError').textContent = 'Enter date as DD/MM (e.g., 15/08)';
+                document.getElementById('birthdateError').classList.remove('hidden');
+                return;
+            }
+            
+            const day = parseInt(dateMatch[1]);
+            const month = parseInt(dateMatch[2]);
+            
+            if (day < 1 || day > 31 || month < 1 || month > 12) {
+                document.getElementById('birthdateError').textContent = 'Day must be 1-31, Month must be 1-12';
+                document.getElementById('birthdateError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('step6');
+            document.getElementById('crushLetter').focus();
+        }
+
+        function startCalculation() {
+            const crushLetter = document.getElementById('crushLetter').value;
+            document.getElementById('letterError').classList.add('hidden');
+            
+            if (!crushLetter) {
+                document.getElementById('letterError').classList.remove('hidden');
+                return;
+            }
+            
+            hideAll();
+            show('calculation');
+            
+            const calcTexts = [
+                'Analyzing name patterns...',
+                'Processing college frequency...',
+                'Matching personality vibrations...',
+                'Running compatibility algorithm...',
+                'Finalizing your crush name...'
+            ];
+
+            let progress = 0;
+            let textIndex = 0;
+
+            const interval = setInterval(() => {
+                progress += 1;
+                document.getElementById('progressFill').style.width = progress + '%';
+                
+                if (progress % 20 === 0 && textIndex < calcTexts.length) {
+                    document.getElementById('calcText').textContent = calcTexts[textIndex];
+                    textIndex++;
+                }
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        generateResult();
+                        hideAll();
+                        show('result');
+                    }, 500);
+                }
+            }, 50);
+        }
+
+        function generateResult() {
+            const gender = document.getElementById('gender').value;
+            const name = document.getElementById('name').value.trim();
+            const college = document.getElementById('college').value.trim();
+            const department = document.getElementById('department').value.trim();
+            const birthdate = document.getElementById('birthdate').value.trim();
+            const crushLetter = document.getElementById('crushLetter').value;
+
+            const nameSum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+            const collegeSum = college.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+            const deptSum = department.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+            
+            const parts = birthdate.split('/');
+            const birthSum = parts.reduce((sum, num) => sum + parseInt(num), 0);
+            
+            const letterPos = crushLetter.charCodeAt(0) - 64;
+
+            const seed = (nameSum * 7 + collegeSum * 3 + deptSum * 5 + birthSum * 11 + letterPos * 13) % 1000;
+
+            const boyNames = [
+              'Aarav', 'Aditya', 'Arjun', 'Atharva', 'Arnav', 'Advait', 'Aniruddha', 'Ashwin', 'Avinash',
+'Darshan', 'Dev', 'Dhruv', 'Ganesh', 'Harshal', 'Jay', 'Kunal', 'Karan', 'Lokesh',
+'Mihir', 'Nikhil', 'Omkar', 'Pranav', 'Pratik', 'Rahul', 'Rohan', 'Rutvik', 'Sai',
+'Sahil', 'Sameer', 'Siddharth', 'Tejas', 'Varun', 'Vedant', 'Vishal', 'Yash',
+'Aman', 'Angad', 'Aryan', 'Ayush', 'Daksh', 'Gurpreet', 'Harman', 'Jatin', 'Kartik',
+'Lakshay', 'Manav', 'Naveen', 'Piyush', 'Raghav', 'Rajat', 'Ravi', 'Rishabh', 'Shivam',
+'Sumit', 'Tarun', 'Uday', 'Veer', 'Vikas', 'Vikram', 'Vivek', 'Yogesh',
+'Aakash', 'Aravind', 'Deepak', 'Harish', 'Karthik', 'Krishna', 'Manoj',
+'Nithin', 'Prasad', 'Pavan', 'Rakesh', 'Ramesh', 'Sanjay', 'Suresh',
+'Surya', 'Vijay', 'Vinay', 'Vishnu', 'Akhil', 'Abhinav', 'Arun',
+'Abhimanyu', 'Aniket', 'Arnab', 'Debasis', 'Dibyendu', 'Gourav', 'Indrajit', 'Joydeep',
+'Parth', 'Pritam', 'Sayan', 'Soham', 'Soumya', 'Subham', 'Tanmay', 'Ujjwal',
+'Chirag', 'Dhairya', 'Hardik', 'Hemant', 'Ishaan', 'Jignesh', 'Kaushal', 'Meet',
+'Pragnesh', 'Ruchit', 'Shrey', 'Vihaan', 'Yuvraj', 'Zeel',
+
+'Aaryan', 'Abeer', 'Ahaan', 'Amit', 'Ansh', 'Armaan', 'Ayaan', 'Bharat',
+'Chaitanya', 'Chetan', 'Devesh', 'Eklavya', 'Faiz', 'Gagan', 'Himanshu',
+'Irfan', 'Kabir', 'Laksh', 'Mayank', 'Mohit', 'Neeraj', 'Niraj',
+'Om', 'Puneet', 'Rajesh', 'Rohit', 'Roshan', 'Samar', 'Sandeep',
+'Satish', 'Shaurya', 'Shashank', 'Sourabh', 'Sudarshan', 'Tushar',
+'Utkarsh', 'Vaibhav', 'Vansh', 'Yatin', 'Zeeshan',
+
+'Advik', 'Ajay', 'Arvind', 'Balaji', 'Dinesh', 'Keshav', 'Lokendra',
+'Madhan', 'Naresh', 'Prakash', 'Ravindra', 'Shankar', 'Srikanth',
+'Tharun', 'Venkatesh', 'Yogendra'
+
+            ];
+
+            const girlNames = [
+                'Aisha', 'Ananya', 'Aditi', 'Akshara', 'Anushka', 'Aishwarya', 'Avani', 'Diya',
+'Gauri', 'Isha', 'Janhavi', 'Khushi', 'Kriti', 'Manasi', 'Meera', 'Muskan',
+'Neha', 'Nidhi', 'Pihu', 'Pooja', 'Pranali', 'Priya', 'Riddhi', 'Ruhi', 'Sakshi',
+'Sanika', 'Sanvi', 'Shreya', 'Simran', 'Sneha', 'Tanvi', 'Tanya', 'Vaishnavi', 'Vedika',
+'Aarohi', 'Anjali', 'Diksha', 'Garima', 'Gunjan', 'Ishita', 'Jiya', 'Kiara', 'Komal',
+'Lavanya', 'Mahika', 'Megha', 'Naina', 'Navya', 'Palak', 'Riya', 'Ritika', 'Sahana',
+'Sanya', 'Shikha', 'Shruti', 'Swati', 'Trishna', 'Vanshika', 'Vidya', 'Yamini',
+'Aarya', 'Amrita', 'Aparna', 'Bhavana', 'Divya', 'Harini', 'Kavya', 'Keerthi',
+'Lakshmi', 'Madhuri', 'Meenakshi', 'Nithya', 'Pavithra', 'Poornima', 'Preethi', 'Radhika',
+'Ramya', 'Sanjana', 'Shruthi', 'Sowmya', 'Swetha', 'Varsha', 'Vennela', 'Yamuna',
+'Arpita', 'Debolina', 'Drishti', 'Ishani', 'Juhi', 'Moumita', 'Prerna', 'Ria',
+'Rupa', 'Sohini', 'Supriya', 'Tithi', 'Trisha', 'Urvi', 'Anwesha', 'Payel',
+'Avni', 'Charmi', 'Dhriti', 'Hiral', 'Janvi', 'Kashvi', 'Khyati', 'Mahi',
+'Myra', 'Niyati', 'Ovi', 'Raahi', 'Sana', 'Urja', 'Zara',
+'Aahana', 'Aashna', 'Aayushi', 'Ami', 'Anvika', 'Arya', 'Barkha', 'Chaitali',
+'Damini', 'Devika', 'Eesha', 'Ekta', 'Falak', 'Gia', 'Hansika', 'Inaaya',
+'Ira', 'Kanishka', 'Krisha', 'Lisha', 'Mrunal', 'Nandini', 'Nikita',
+'Ojasvi', 'Pari', 'Pankhuri', 'Rashmi', 'Reema', 'Roshni', 'Saisha',
+'Samaira', 'Sharika', 'Sharmila', 'Shivani', 'Siya', 'Srushti', 'Tara',
+'Tejaswi', 'Urvashi', 'Veda', 'Yashika', 'Ziya', 'Alisha', 'Ankita',
+'Bhavya', 'Charu', 'Eshita', 'Kritika', 'Mitali', 'Nupur', 'Rupal',
+'Sonal', 'Tanisha', 'Yukti'
+
+            ];
+
+            const crushNames = gender === 'male' ? girlNames : boyNames;
+
+            let matchingNames = crushNames.filter(n => n.startsWith(crushLetter));
+            if (matchingNames.length === 0) {
+                matchingNames = crushNames;
+            }
+
+            const nameIndex = seed % matchingNames.length;
+            const crushName = matchingNames[nameIndex];
+            
+            document.getElementById('crushName').textContent = crushName;
+        }
+
+        function reset() {
+            document.querySelectorAll('input, select').forEach(el => el.value = '');
+            document.querySelectorAll('.error').forEach(el => el.classList.add('hidden'));
+            document.getElementById('progressFill').style.width = '0%';
+            
+            hideAll();
+            show('intro');
+        }
+
+        function shareWhatsApp() {
+            const crushName = document.getElementById('crushName').textContent;
+            const text = encodeURIComponent(`❤️ Mera college crush ka naam nikla: ${crushName}! 
+Tumhara bhi try karo 👇
+${window.location.href}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('✅ Link copied! Share on Instagram Story.');
+            }).catch(() => {
+                alert('❌ Could not copy link. Please copy manually: ' + window.location.href);
+            });
+        }
+    </script>
+</body>
+</html>
