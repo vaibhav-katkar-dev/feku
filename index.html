@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Crush Name Generator ❤️</title>
-    <script src="https://quge5.com/88/tag.min.js" data-zone="195042" async data-cfasync="false"></script>
     <meta name="description" content="Science + Logic based crush prediction. Just for fun!">
+    
+    <!-- MonetAg Ad Scripts -->
+    <script async src="https://quge5.com/88/tag.min.js" data-zone="195042" data-cfasync="false"></script>
+    
     <style>
         * {
             margin: 0;
@@ -137,13 +140,24 @@
         .btn-copy:hover {
             background: #d32f4d;
         }
-        .ad-placeholder {
-            background: #f5f5f5;
-            padding: 15px;
-            margin: 15px 0;
+        /* Ad Container Styles */
+        .ad-container {
+            margin: 20px 0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 8px;
-            color: #999;
-            border: 2px dashed #ddd;
+            overflow: hidden;
+        }
+        .ad-top {
+            margin-bottom: 20px;
+        }
+        .ad-middle {
+            margin: 25px 0;
+        }
+        .ad-bottom {
+            margin-top: 25px;
         }
         .error {
             color: #e74c3c;
@@ -192,7 +206,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="ad-placeholder">Advertisement Space</div>
+        <!-- Top Ad - Shows on all pages -->
+        <div class="ad-container ad-top" id="adTop"></div>
 
         <!-- Intro Page -->
         <div id="intro" class="step">
@@ -257,6 +272,10 @@
             </div>
             <h1>Your College Name?</h1>
             <p class="progress-text">Step 3 of 6</p>
+            
+            <!-- Middle Ad - Shows on Step 3 -->
+            <div class="ad-container ad-middle" id="adMiddle"></div>
+            
             <div class="input-group">
                 <input type="text" id="college" placeholder="e.g., Delhi University">
                 <div id="collegeError" class="error hidden">Please enter your college name</div>
@@ -370,6 +389,9 @@
             <p>This result is based on name vibration analysis and academic pattern matching.</p>
             <p style="font-size: 14px; color: #999; margin-top: 10px;">Don't worry... ye sirf fun ke liye hai 😄</p>
             
+            <!-- Bottom Ad - Shows on Result page -->
+            <div class="ad-container ad-bottom" id="adBottom"></div>
+            
             <button class="btn" onclick="reset()" style="margin-top: 20px;">Try Again</button>
             
             <div class="share">
@@ -377,18 +399,44 @@
                 <button class="btn btn-whatsapp" onclick="shareWhatsApp()">📱 WhatsApp</button>
                 <button class="btn btn-copy" onclick="copyLink()">📋 Copy Link</button>
             </div>
-            
-            <div class="ad-placeholder">Advertisement Space</div>
         </div>
     </div>
 
     <script>
+        // Ad initialization function
+        function loadAds() {
+            // Top ad loads on all pages
+            const topAdHtml = '<ins class="eas6a97888e" data-zoneid="5478590"></ins>';
+            document.getElementById('adTop').innerHTML = topAdHtml;
+            
+            // Check if middle ad container exists and load
+            const middleAd = document.getElementById('adMiddle');
+            if (middleAd && middleAd.innerHTML === '') {
+                const middleAdHtml = '<ins class="eas6a97888e" data-zoneid="5478592"></ins>';
+                middleAd.innerHTML = middleAdHtml;
+            }
+            
+            // Check if bottom ad container exists and load
+            const bottomAd = document.getElementById('adBottom');
+            if (bottomAd && bottomAd.innerHTML === '') {
+                const bottomAdHtml = '<ins class="eas6a97888e" data-zoneid="5478594"></ins>';
+                bottomAd.innerHTML = bottomAdHtml;
+            }
+        }
+
+        // Load ads on page load
+        window.addEventListener('load', loadAds);
+
         function hideAll() {
             document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
         }
 
         function show(stepId) {
             document.getElementById(stepId).classList.remove('hidden');
+            // Reload ads when showing new step
+            if (stepId === 'step3' || stepId === 'result') {
+                setTimeout(loadAds, 100);
+            }
         }
 
         function goToStep1() {
@@ -542,58 +590,54 @@
             const seed = (nameSum * 7 + collegeSum * 3 + deptSum * 5 + birthSum * 11 + letterPos * 13) % 1000;
 
             const boyNames = [
-              'Aarav', 'Aditya', 'Arjun', 'Atharva', 'Arnav', 'Advait', 'Aniruddha', 'Ashwin', 'Avinash',
-'Darshan', 'Dev', 'Dhruv', 'Ganesh', 'Harshal', 'Jay', 'Kunal', 'Karan', 'Lokesh',
-'Mihir', 'Nikhil', 'Omkar', 'Pranav', 'Pratik', 'Rahul', 'Rohan', 'Rutvik', 'Sai',
-'Sahil', 'Sameer', 'Siddharth', 'Tejas', 'Varun', 'Vedant', 'Vishal', 'Yash',
-'Aman', 'Angad', 'Aryan', 'Ayush', 'Daksh', 'Gurpreet', 'Harman', 'Jatin', 'Kartik',
-'Lakshay', 'Manav', 'Naveen', 'Piyush', 'Raghav', 'Rajat', 'Ravi', 'Rishabh', 'Shivam',
-'Sumit', 'Tarun', 'Uday', 'Veer', 'Vikas', 'Vikram', 'Vivek', 'Yogesh',
-'Aakash', 'Aravind', 'Deepak', 'Harish', 'Karthik', 'Krishna', 'Manoj',
-'Nithin', 'Prasad', 'Pavan', 'Rakesh', 'Ramesh', 'Sanjay', 'Suresh',
-'Surya', 'Vijay', 'Vinay', 'Vishnu', 'Akhil', 'Abhinav', 'Arun',
-'Abhimanyu', 'Aniket', 'Arnab', 'Debasis', 'Dibyendu', 'Gourav', 'Indrajit', 'Joydeep',
-'Parth', 'Pritam', 'Sayan', 'Soham', 'Soumya', 'Subham', 'Tanmay', 'Ujjwal',
-'Chirag', 'Dhairya', 'Hardik', 'Hemant', 'Ishaan', 'Jignesh', 'Kaushal', 'Meet',
-'Pragnesh', 'Ruchit', 'Shrey', 'Vihaan', 'Yuvraj', 'Zeel',
-
-'Aaryan', 'Abeer', 'Ahaan', 'Amit', 'Ansh', 'Armaan', 'Ayaan', 'Bharat',
-'Chaitanya', 'Chetan', 'Devesh', 'Eklavya', 'Faiz', 'Gagan', 'Himanshu',
-'Irfan', 'Kabir', 'Laksh', 'Mayank', 'Mohit', 'Neeraj', 'Niraj',
-'Om', 'Puneet', 'Rajesh', 'Rohit', 'Roshan', 'Samar', 'Sandeep',
-'Satish', 'Shaurya', 'Shashank', 'Sourabh', 'Sudarshan', 'Tushar',
-'Utkarsh', 'Vaibhav', 'Vansh', 'Yatin', 'Zeeshan',
-
-'Advik', 'Ajay', 'Arvind', 'Balaji', 'Dinesh', 'Keshav', 'Lokendra',
-'Madhan', 'Naresh', 'Prakash', 'Ravindra', 'Shankar', 'Srikanth',
-'Tharun', 'Venkatesh', 'Yogendra'
-
+                'Aarav', 'Aditya', 'Arjun', 'Atharva', 'Arnav', 'Advait', 'Aniruddha', 'Ashwin', 'Avinash',
+                'Darshan', 'Dev', 'Dhruv', 'Ganesh', 'Harshal', 'Jay', 'Kunal', 'Karan', 'Lokesh',
+                'Mihir', 'Nikhil', 'Omkar', 'Pranav', 'Pratik', 'Rahul', 'Rohan', 'Rutvik', 'Sai',
+                'Sahil', 'Sameer', 'Siddharth', 'Tejas', 'Varun', 'Vedant', 'Vishal', 'Yash',
+                'Aman', 'Angad', 'Aryan', 'Ayush', 'Daksh', 'Gurpreet', 'Harman', 'Jatin', 'Kartik',
+                'Lakshay', 'Manav', 'Naveen', 'Piyush', 'Raghav', 'Rajat', 'Ravi', 'Rishabh', 'Shivam',
+                'Sumit', 'Tarun', 'Uday', 'Veer', 'Vikas', 'Vikram', 'Vivek', 'Yogesh',
+                'Aakash', 'Aravind', 'Deepak', 'Harish', 'Karthik', 'Krishna', 'Manoj',
+                'Nithin', 'Prasad', 'Pavan', 'Rakesh', 'Ramesh', 'Sanjay', 'Suresh',
+                'Surya', 'Vijay', 'Vinay', 'Vishnu', 'Akhil', 'Abhinav', 'Arun',
+                'Abhimanyu', 'Aniket', 'Arnab', 'Debasis', 'Dibyendu', 'Gourav', 'Indrajit', 'Joydeep',
+                'Parth', 'Pritam', 'Sayan', 'Soham', 'Soumya', 'Subham', 'Tanmay', 'Ujjwal',
+                'Chirag', 'Dhairya', 'Hardik', 'Hemant', 'Ishaan', 'Jignesh', 'Kaushal', 'Meet',
+                'Pragnesh', 'Ruchit', 'Shrey', 'Vihaan', 'Yuvraj', 'Zeel',
+                'Aaryan', 'Abeer', 'Ahaan', 'Amit', 'Ansh', 'Armaan', 'Ayaan', 'Bharat',
+                'Chaitanya', 'Chetan', 'Devesh', 'Eklavya', 'Faiz', 'Gagan', 'Himanshu',
+                'Irfan', 'Kabir', 'Laksh', 'Mayank', 'Mohit', 'Neeraj', 'Niraj',
+                'Om', 'Puneet', 'Rajesh', 'Rohit', 'Roshan', 'Samar', 'Sandeep',
+                'Satish', 'Shaurya', 'Shashank', 'Sourabh', 'Sudarshan', 'Tushar',
+                'Utkarsh', 'Vaibhav', 'Vansh', 'Yatin', 'Zeeshan',
+                'Advik', 'Ajay', 'Arvind', 'Balaji', 'Dinesh', 'Keshav', 'Lokendra',
+                'Madhan', 'Naresh', 'Prakash', 'Ravindra', 'Shankar', 'Srikanth',
+                'Tharun', 'Venkatesh', 'Yogendra'
             ];
 
             const girlNames = [
                 'Aisha', 'Ananya', 'Aditi', 'Akshara', 'Anushka', 'Aishwarya', 'Avani', 'Diya',
-'Gauri', 'Isha', 'Janhavi', 'Khushi', 'Kriti', 'Manasi', 'Meera', 'Muskan',
-'Neha', 'Nidhi', 'Pihu', 'Pooja', 'Pranali', 'Priya', 'Riddhi', 'Ruhi', 'Sakshi',
-'Sanika', 'Sanvi', 'Shreya', 'Simran', 'Sneha', 'Tanvi', 'Tanya', 'Vaishnavi', 'Vedika',
-'Aarohi', 'Anjali', 'Diksha', 'Garima', 'Gunjan', 'Ishita', 'Jiya', 'Kiara', 'Komal',
-'Lavanya', 'Mahika', 'Megha', 'Naina', 'Navya', 'Palak', 'Riya', 'Ritika', 'Sahana',
-'Sanya', 'Shikha', 'Shruti', 'Swati', 'Trishna', 'Vanshika', 'Vidya', 'Yamini',
-'Aarya', 'Amrita', 'Aparna', 'Bhavana', 'Divya', 'Harini', 'Kavya', 'Keerthi',
-'Lakshmi', 'Madhuri', 'Meenakshi', 'Nithya', 'Pavithra', 'Poornima', 'Preethi', 'Radhika',
-'Ramya', 'Sanjana', 'Shruthi', 'Sowmya', 'Swetha', 'Varsha', 'Vennela', 'Yamuna',
-'Arpita', 'Debolina', 'Drishti', 'Ishani', 'Juhi', 'Moumita', 'Prerna', 'Ria',
-'Rupa', 'Sohini', 'Supriya', 'Tithi', 'Trisha', 'Urvi', 'Anwesha', 'Payel',
-'Avni', 'Charmi', 'Dhriti', 'Hiral', 'Janvi', 'Kashvi', 'Khyati', 'Mahi',
-'Myra', 'Niyati', 'Ovi', 'Raahi', 'Sana', 'Urja', 'Zara',
-'Aahana', 'Aashna', 'Aayushi', 'Ami', 'Anvika', 'Arya', 'Barkha', 'Chaitali',
-'Damini', 'Devika', 'Eesha', 'Ekta', 'Falak', 'Gia', 'Hansika', 'Inaaya',
-'Ira', 'Kanishka', 'Krisha', 'Lisha', 'Mrunal', 'Nandini', 'Nikita',
-'Ojasvi', 'Pari', 'Pankhuri', 'Rashmi', 'Reema', 'Roshni', 'Saisha',
-'Samaira', 'Sharika', 'Sharmila', 'Shivani', 'Siya', 'Srushti', 'Tara',
-'Tejaswi', 'Urvashi', 'Veda', 'Yashika', 'Ziya', 'Alisha', 'Ankita',
-'Bhavya', 'Charu', 'Eshita', 'Kritika', 'Mitali', 'Nupur', 'Rupal',
-'Sonal', 'Tanisha', 'Yukti'
-
+                'Gauri', 'Isha', 'Janhavi', 'Khushi', 'Kriti', 'Manasi', 'Meera', 'Muskan',
+                'Neha', 'Nidhi', 'Pihu', 'Pooja', 'Pranali', 'Priya', 'Riddhi', 'Ruhi', 'Sakshi',
+                'Sanika', 'Sanvi', 'Shreya', 'Simran', 'Sneha', 'Tanvi', 'Tanya', 'Vaishnavi', 'Vedika',
+                'Aarohi', 'Anjali', 'Diksha', 'Garima', 'Gunjan', 'Ishita', 'Jiya', 'Kiara', 'Komal',
+                'Lavanya', 'Mahika', 'Megha', 'Naina', 'Navya', 'Palak', 'Riya', 'Ritika', 'Sahana',
+                'Sanya', 'Shikha', 'Shruti', 'Swati', 'Trishna', 'Vanshika', 'Vidya', 'Yamini',
+                'Aarya', 'Amrita', 'Aparna', 'Bhavana', 'Divya', 'Harini', 'Kavya', 'Keerthi',
+                'Lakshmi', 'Madhuri', 'Meenakshi', 'Nithya', 'Pavithra', 'Poornima', 'Preethi', 'Radhika',
+                'Ramya', 'Sanjana', 'Shruthi', 'Sowmya', 'Swetha', 'Varsha', 'Vennela', 'Yamuna',
+                'Arpita', 'Debolina', 'Drishti', 'Ishani', 'Juhi', 'Moumita', 'Prerna', 'Ria',
+                'Rupa', 'Sohini', 'Supriya', 'Tithi', 'Trisha', 'Urvi', 'Anwesha', 'Payel',
+                'Avni', 'Charmi', 'Dhriti', 'Hiral', 'Janvi', 'Kashvi', 'Khyati', 'Mahi',
+                'Myra', 'Niyati', 'Ovi', 'Raahi', 'Sana', 'Urja', 'Zara',
+                'Aahana', 'Aashna', 'Aayushi', 'Ami', 'Anvika', 'Arya', 'Barkha', 'Chaitali',
+                'Damini', 'Devika', 'Eesha', 'Ekta', 'Falak', 'Gia', 'Hansika', 'Inaaya',
+                'Ira', 'Kanishka', 'Krisha', 'Lisha', 'Mrunal', 'Nandini', 'Nikita',
+                'Ojasvi', 'Pari', 'Pankhuri', 'Rashmi', 'Reema', 'Roshni', 'Saisha',
+                'Samaira', 'Sharika', 'Sharmila', 'Shivani', 'Siya', 'Srushti', 'Tara',
+                'Tejaswi', 'Urvashi', 'Veda', 'Yashika', 'Ziya', 'Alisha', 'Ankita',
+                'Bhavya', 'Charu', 'Eshita', 'Kritika', 'Mitali', 'Nupur', 'Rupal',
+                'Sonal', 'Tanisha', 'Yukti'
             ];
 
             const crushNames = gender === 'male' ? girlNames : boyNames;
@@ -602,37 +646,34 @@
             if (matchingNames.length === 0) {
                 matchingNames = crushNames;
             }
-
             const nameIndex = seed % matchingNames.length;
             const crushName = matchingNames[nameIndex];
-            
+
             document.getElementById('crushName').textContent = crushName;
-        }
+    }
 
-        function reset() {
-            document.querySelectorAll('input, select').forEach(el => el.value = '');
-            document.querySelectorAll('.error').forEach(el => el.classList.add('hidden'));
-            document.getElementById('progressFill').style.width = '0%';
-            
-            hideAll();
-            show('intro');
-        }
+    function reset() {
+        document.querySelectorAll('input, select').forEach(el => el.value = '');
+        document.querySelectorAll('.error').forEach(el => el.classList.add('hidden'));
+        document.getElementById('progressFill').style.width = '0%';
+        
+        hideAll();
+        show('intro');
+    }
 
-        function shareWhatsApp() {
-            const crushName = document.getElementById('crushName').textContent;
-            const text = encodeURIComponent(`❤️ Mera college crush ka naam nikla: ${crushName}! 
+    function shareWhatsApp() {
+        const crushName = document.getElementById('crushName').textContent;
+        const text = encodeURIComponent(`❤️ Mera college crush ka naam nikla: ${crushName}!
 Tumhara bhi try karo 👇
-${window.location.href}`);
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
-
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                alert('✅ Link copied! Share on Instagram Story.');
-            }).catch(() => {
-                alert('❌ Could not copy link. Please copy manually: ' + window.location.href);
-            });
-        }
-    </script>
+${window.location.href});             window.open(https://wa.me/?text=${text}`, '_blank');
+}
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('✅ Link copied! Share on Instagram Story.');
+        }).catch(() => {
+            alert('❌ Could not copy link. Please copy manually: ' + window.location.href);
+        });
+    }
+</script>
 </body>
-</html>
+</html></parameter>
