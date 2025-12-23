@@ -36,16 +36,58 @@ const utils = {
 
     // Share on WhatsApp (Viral Optimized)
     shareWhatsApp: (text) => {
-        // Add new viral text formatting and ensure URL is directly appended for better previews
-        const encodedText = encodeURIComponent(`*${text}* 🤯\n\nCheck out your results here 👇`);
+        // Add viral psychology triggers
+        const viralText = `🤯 *OMG! This is CRAZY!* 🤯\n\n${text}\n\n⚠️ WARNING: Once you try this, you CAN'T stop! 😱\n\n👇 Click NOW before it's gone 👇`;
+        const encodedText = encodeURIComponent(viralText);
         const url = `https://wa.me/?text=${encodedText}%0A${encodeURIComponent(window.location.href)}`;
         window.open(url, '_blank');
     },
 
-    // Copy Link
+    // Copy Link with viral alert
     copyLink: () => {
         navigator.clipboard.writeText(window.location.href).then(() => {
-            alert("Link Copied! Share it with friends. 📋");
+            alert("🔗 Link Copied!\n\n🔥 Pro Tip: Paste this EVERYWHERE!\n\nYour friends will THANK you! �💯");
+        });
+    },
+
+    // Share on Facebook (Viral text)
+    shareFacebook: (text) => {
+        const url = encodeURIComponent(window.location.href);
+        // Viral psychology: Curiosity + FOMO
+        const viralText = `🚨 YOU WON'T BELIEVE THIS! 🚨\n\n${text}\n\n😱 97% of people got this WRONG!\n\n👉 Click to find out if YOU'RE in the top 3%!`;
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(viralText)}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    },
+
+    // Share on Twitter (Viral tweet)
+    shareTwitter: (text) => {
+        const url = encodeURIComponent(window.location.href);
+        // Twitter-optimized: Short + Curiosity + Hashtags
+        const viralText = `🤯 MIND = BLOWN!\n\n${text}\n\n⚠️ This is TOO accurate!\n\n#Viral #MustTry #OMG`;
+        const tweet = encodeURIComponent(viralText);
+        const shareUrl = `https://twitter.com/intent/tweet?text=${tweet}&url=${url}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    },
+
+    // Share on Instagram (Viral copy + open app)
+    shareInstagram: () => {
+        // User-to-user style message with link
+        const viralCaption = `🤯 Bro, maine yeh try kiya aur MIND BLOWN! 🔥
+
+😱 Results itne accurate hain ki dar lag gaya! 
+
+⚠️ WARNING: Ek baar shuru kiya toh band nahi hota! 
+
+Try kar aur mujhe bata tera kya result aaya! 👇`;
+
+        // Copy link + caption together
+        navigator.clipboard.writeText(`${viralCaption}\n\n${window.location.href}`).then(() => {
+            alert("� Link + Caption COPIED!\n\n📸 Next Steps:\n1️⃣ Open Instagram\n2️⃣ Post a Story or DM to friends\n3️⃣ Paste (Link already included!)\n\n� They'll be HOOKED! 🎯");
+
+            // Try to open Instagram
+            setTimeout(() => {
+                window.open('instagram://story-camera', '_blank');
+            }, 500);
         });
     },
 
