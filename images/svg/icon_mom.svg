@@ -1,0 +1,15 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fd79a8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e84393;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <!-- Mom Silhouette abstract -->
+  <circle cx="200" cy="120" r="50" fill="#fff"/>
+  <path d="M130 250 Q200 150 270 250" fill="#fff"/>
+  <!-- Crown -->
+  <path d="M170 80 L200 40 L230 80 L200 90 Z" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2"/>
+  <text x="175" y="280" font-family="Arial" font-size="20" fill="white" font-weight="bold">MAA</text>
+</svg>

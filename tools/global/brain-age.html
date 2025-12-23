@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Age Test 🧠</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Brain Age Test 🧠</h1>
+            <p>Answer 3 simple questions to calculate your mental age.</p>
+        </div>
+
+        <div class="tool-container">
+            <!-- Step 1 -->
+            <div id="step1">
+                <div class="input-group">
+                    <label>1. What comes after 3, 6, 9...?</label>
+                    <select id="q1">
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="nextStep(1)">Next</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step2" class="hidden">
+                <div class="input-group">
+                    <label>2. Which is heavier?</label>
+                    <select id="q2">
+                        <option value="kg">1kg of Steel</option>
+                        <option value="feathers">1kg of Feathers</option>
+                        <option value="same">They are same</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="nextStep(2)">Next</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div id="step3" class="hidden">
+                <div class="input-group">
+                    <label>3. Your current mood?</label>
+                    <select id="q3">
+                        <option value="happy">Happy 😄</option>
+                        <option value="tired">Tired 😴</option>
+                        <option value="bored">Bored 😐</option>
+                        <option value="excited">Excited 🤩</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="calculate()">Calculate Age</button>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" style="display:none;">
+                <h3>Scanning brainwaves...</h3>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div id="result" class="result-box">
+                <h2>Your Mental Age Is:</h2>
+                <div class="result-value" id="ageResult"></div>
+                <p id="ageComment"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Test Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(current) {
+            document.getElementById(`step${current}`).classList.add('hidden');
+            document.getElementById(`step${current + 1}`).classList.remove('hidden');
+        }
+
+        function calculate() {
+            document.getElementById('step3').classList.add('hidden');
+
+            utils.simulateLoading('progress', 2500, () => {
+                // Logic: Random age between 5 and 80, skewed by answers? Nah, just random fun.
+                // Or maybe seed it by answers.
+
+                const q1 = document.getElementById('q1').value;
+                const q2 = document.getElementById('q2').value;
+
+                let baseAge = 20;
+
+                // If they got logic wrong, make them a baby
+                if (q1 !== '12' || q2 !== 'same') {
+                    baseAge = utils.random(3, 10);
+                } else {
+                    baseAge = utils.random(18, 65);
+                }
+
+                const resultEl = document.getElementById('ageResult');
+                const commentEl = document.getElementById('ageComment');
+
+                resultEl.textContent = baseAge + " Years Old";
+
+                if (baseAge < 12) {
+                    commentEl.textContent = "Are you sure you're allowed on this phone? 👶";
+                } else if (baseAge > 50) {
+                    commentEl.textContent = "Wise and experienced! 🧐";
+                } else {
+                    commentEl.textContent = "Prime of your life! 😎";
+                }
+
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const age = document.getElementById('ageResult').textContent;
+            utils.shareWhatsApp(`My Brain Age is ${age}! take the test here: `);
+        }
+    </script>
+</body>
+
+</html>

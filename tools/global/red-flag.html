@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Hidden Red Flag 🚩</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Your Red Flag 🚩</h1>
+            <p>What is your most toxic trait? (AI Scan)</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="inp">
+                <div class="input-group">
+                    <label>Your Name</label>
+                    <input type="text" id="name" placeholder="Name">
+                </div>
+                <button class="action-btn" onclick="scan()">Analyze My Toxicity</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Scanning search history... (just kidding)</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Your Biggest Red Flag:</h2>
+                <div class="result-value" id="flag" style="color: #e74c3c; font-size: 1.8rem;"></div>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share Flag</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()" style="margin-top: 20px;">Check Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const flags = [
+            "You reply to texts 3 business days later. 📱",
+            "You only talk about yourself. 🗣️",
+            "You think pineapple on pizza is a personality trait. 🍕",
+            "You steal hoodies and never return them. 🧥",
+            "You say 'I'm fine' when you are clearly NOT fine. 😡",
+            "You judge people based on their Spotify Wrapped. 🎵"
+        ];
+
+        function scan() {
+            if (!document.getElementById('name').value) return alert("Name required");
+            document.getElementById('inp').style.display = 'none';
+            utils.simulateLoading('progress', 2000, () => {
+                document.getElementById('flag').textContent = utils.sample(flags);
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const f = document.getElementById('flag').textContent;
+            utils.shareWhatsApp(`My Toxic Red Flag is: ${f} Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

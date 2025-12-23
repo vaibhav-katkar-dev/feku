@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Personality Type 😳</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Secret Personality 😳</h1>
+            <p>What is your true hidden vibe?</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="step1">
+                <div class="input-group">
+                    <label>Choose a color:</label>
+                    <select id="c1">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Black</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="reveal()">Analyze</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Analyzing aura...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>You are a:</h2>
+                <div class="result-value" id="pType"></div>
+                <p id="pDesc"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const types = [
+            { t: "The Secret Genius 🤓", d: "You act silly but you know everything." },
+            { t: "The Drama Magnet 🎭", d: "Somehow, trouble always finds you." },
+            { t: "The Chill Legend 🧊", d: "Nothing bothers you. You are zen." },
+            { t: "The Professional Overthinker 🤔", d: "You create problems that don't exist." },
+            { t: "The Midnight Snacker 🍪", d: "Your true love is food." }
+        ];
+
+        function reveal() {
+            document.getElementById('step1').classList.add('hidden');
+            utils.simulateLoading('progress', 1500, () => {
+                const res = utils.sample(types);
+                document.getElementById('pType').textContent = res.t;
+                document.getElementById('pDesc').textContent = res.d;
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const t = document.getElementById('pType').textContent;
+            utils.shareWhatsApp(`My Secret Personality Type is: ${t}. Find yours: `);
+        }
+    </script>
+</body>
+
+</html>

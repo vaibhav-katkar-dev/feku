@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Kya Kahenge? Meter 😶‍🌫️</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Log Kya Kahenge? 😶‍🌫️</h1>
+            <p>Social Anxiety & Society Pressure Score</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="inp">
+                <div class="input-group">
+                    <label>Your Age</label>
+                    <input type="number" id="age">
+                </div>
+                <div class="input-group">
+                    <label>Are you married?</label>
+                    <select id="status">
+                        <option>No</option>
+                        <option>Yes</option>
+                        <option>It's Complicated</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="calc()">Check Society Score</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Calling Sharma Ji's son for comparison...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Society Pressure Level:</h2>
+                <div class="result-value" id="score"></div>
+                <p id="msg"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()" style="margin-top: 20px;">Check Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calc() {
+            document.getElementById('inp').style.display = 'none';
+            utils.simulateLoading('progress', 2500, () => {
+                const age = parseInt(document.getElementById('age').value) || 20;
+                let score = utils.random(10, 50);
+
+                if (age > 25) score += 40; // High pressure after 25
+                if (document.getElementById('status').value === 'No') score += 10;
+
+                if (score > 100) score = 99.9;
+
+                document.getElementById('score').textContent = score + "%";
+                let msg = "";
+                if (score > 80) msg = "OMG! The Aunties are definitely talking about you! 😱";
+                else if (score > 50) msg = "Log kuch toh kahenge... ignore karo. 🙉";
+                else msg = "You are free! Nobody cares! 🥳";
+
+                document.getElementById('msg').textContent = msg;
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const s = document.getElementById('score').textContent;
+            utils.shareWhatsApp(`My 'Log Kya Kahenge' Score is ${s} 😱 Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

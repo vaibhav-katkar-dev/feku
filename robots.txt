@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://feku.me/sitemap.xml

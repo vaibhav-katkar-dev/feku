@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Rare Is Your Name? 🔍</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>How Rare Is Your Name? 🔍</h1>
+            <p>Global database search...</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="inputForm">
+                <div class="input-group">
+                    <label>Enter Your First Name</label>
+                    <input type="text" id="nameInput" placeholder="e.g. Rahul, John..." autocomplete="off">
+                </div>
+                <button class="action-btn" onclick="checkRarity()">Search Database</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Searching 8 Billion Records...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>The Result:</h2>
+                <h3 id="displayName" style="margin-top: 10px; color: #636e72;"></h3>
+                <div class="result-value" id="rarityValue"></div>
+                <p id="rarityComment"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Another</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkRarity() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (name.length < 2) {
+                alert("Please enter a valid name!");
+                return;
+            }
+
+            document.getElementById('inputForm').classList.add('hidden');
+
+            // Seeded random based on name hash so result is always same for same name
+            const hash = name.toLowerCase().hashCode();
+            const rarity = Math.abs(hash % 10000) / 100; // 0.00 to 99.99
+
+            utils.simulateLoading('progress', 3000, () => {
+                const displayRarity = rarity < 1 ? rarity.toFixed(4) : rarity.toFixed(2);
+
+                document.getElementById('displayName').textContent = `For name "${name}"`;
+                document.getElementById('rarityValue').textContent = `Top ${displayRarity}%`;
+
+                const commentEl = document.getElementById('rarityComment');
+                if (rarity < 5) {
+                    commentEl.textContent = "EXTREMELY RARE! You are one of a kind 💎";
+                } else if (rarity < 20) {
+                    commentEl.textContent = "Quite unique! Not many people have this name 🌟";
+                } else {
+                    commentEl.textContent = "A popular name beloved by many! ❤️";
+                }
+
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const val = document.getElementById('rarityValue').textContent;
+            utils.shareWhatsApp(`My name is in the ${val} of rarity! Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

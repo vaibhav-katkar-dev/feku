@@ -1,679 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta name="monetag" content="d8c3f191719df3a00e4e717e42030da1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Crush Name Generator ❤️</title>
-    <meta name="description" content="Science + Logic based crush prediction. Just for fun!">
-    
-    <!-- MonetAg Ad Scripts -->
-    <script async src="https://quge5.com/88/tag.min.js" data-zone="195042" data-cfasync="false"></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 450px;
-            width: 100%;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            padding: 30px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 26px;
-            margin-bottom: 10px;
-            color: #667eea;
-        }
-        p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #666;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-            font-weight: bold;
-            width: 100%;
-        }
-        .btn:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        .btn:active {
-            transform: translateY(0);
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin: 15px 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #667eea;
-            transform: scale(1.02);
-        }
-        .progress-text {
-            margin: 15px 0;
-            font-size: 14px;
-            color: #888;
-            font-weight: bold;
-        }
-        .loading {
-            display: none;
-            margin: 20px 0;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 12px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 15px 0;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 0%;
-            transition: width 0.3s;
-        }
-        .hidden {
-            display: none;
-        }
-        .result-name {
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 20px 0;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .share {
-            margin-top: 25px;
-        }
-        .share .btn {
-            margin: 8px 5px;
-            padding: 12px 20px;
-            font-size: 14px;
-        }
-        .btn-whatsapp {
-            background: #25d366;
-        }
-        .btn-whatsapp:hover {
-            background: #20ba5a;
-        }
-        .btn-copy {
-            background: #e4405f;
-        }
-        .btn-copy:hover {
-            background: #d32f4d;
-        }
-        /* Ad Container Styles */
-        .ad-container {
-            margin: 20px 0;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .ad-top {
-            margin-bottom: 20px;
-        }
-        .ad-middle {
-            margin: 25px 0;
-        }
-        .ad-bottom {
-            margin-top: 25px;
-        }
-        .error {
-            color: #e74c3c;
-            font-size: 14px;
-            margin-top: -10px;
-            margin-bottom: 10px;
-            animation: shake 0.5s;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-        .input-group {
-            text-align: left;
-            margin: 20px 0;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
-            font-size: 15px;
-        }
-        .step-indicator {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .step-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            transition: all 0.3s;
-        }
-        .step-dot.active {
-            background: #667eea;
-            transform: scale(1.3);
-        }
-        .step-dot.completed {
-            background: #764ba2;
-        }
-    </style>
+    <title>Feku.me - Viral Fun Tools & Predictions 🎲</title>
+    <!-- Open Graph for WhatsApp & Discovery -->
+    <meta property="og:title" content="Feku.me - Viral Fun Tools 🎲">
+    <meta property="og:description" content="Check your Crush, Brain Age, and Future Predictions! 100% Free.">
+    <meta property="og:image" content="https://feku.me/images/blog/viral_social_media.png">
+    <meta property="og:url" content="https://feku.me/">
+    <meta property="og:type" content="website">
+
+    <meta name="description"
+        content="The internet's favorite fun tools! College Crush Calculator, Future Predictions, Friendship Tests, and more. 100% Free & Entertainment only.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Feku",
+      "url": "https://feku.me/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://feku.me/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
+
 <body>
+
     <div class="container">
-        <!-- Top Ad - Shows on all pages -->
-        <div class="ad-container ad-top" id="adTop"></div>
+        <!-- Hero Section -->
+        <header class="header">
+            <h1>Fun Tools That <br>Everyone Is Sharing 😄</h1>
+            <p>100% Free • No Login • Instant Fun</p>
+            <div style="margin-top:20px; display:flex; gap:10px; justify-content:center;">
+                <a href="#global" class="action-btn" style="width:auto; padding: 12px 25px; font-size:0.9rem;">Start
+                    Playing 🚀</a>
+                <a href="blog.html" class="action-btn"
+                    style="width:auto; padding: 12px 25px; font-size:0.9rem; background: #fff; color: #6c5ce7; border: 2px solid #6c5ce7;">Read
+                    Blog 📰</a>
+            </div>
+        </header>
 
-        <!-- Intro Page -->
-        <div id="intro" class="step">
-            <h1>❤️ College Crush Name Generator</h1>
-            <p>Science + Logic based crush prediction</p>
-            <p style="font-size: 14px; color: #999;">(Just for fun 😄)</p>
-            <button class="btn" onclick="goToStep1()">Start Calculation</button>
+        <!-- Global Tools -->
+        <div class="section-title" id="global">
+            <span>🌍</span>
+            <h2>Most Viral Right Now</h2>
         </div>
 
-        <!-- Step 1: Gender -->
-        <div id="step1" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-            </div>
-            <h1>You Are?</h1>
-            <p class="progress-text">Step 1 of 6</p>
-            <div class="input-group">
-                <label>Select Your Gender</label>
-                <select id="gender">
-                    <option value="">Select Gender</option>
-                    <option value="male">Male (Boy) 👦</option>
-                    <option value="female">Female (Girl) 👧</option>
-                </select>
-                <div id="genderError" class="error hidden">Please select your gender</div>
-            </div>
-            <button class="btn" onclick="goToStep2()">Next</button>
-        </div>
-
-        <!-- Step 2: Name -->
-        <div id="step2" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot completed"></div>
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-            </div>
-            <h1>What's Your Name?</h1>
-            <p class="progress-text">Step 2 of 6</p>
-            <div class="input-group">
-                <input type="text" id="name" placeholder="Enter your full name">
-                <div id="nameError" class="error hidden">Please enter at least 2 characters</div>
-            </div>
-            <button class="btn" onclick="goToStep3()">Next</button>
-        </div>
-
-        <!-- Step 3: College -->
-        <div id="step3" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-            </div>
-            <h1>Your College Name?</h1>
-            <p class="progress-text">Step 3 of 6</p>
-            
-            <!-- Middle Ad - Shows on Step 3 -->
-            <div class="ad-container ad-middle" id="adMiddle"></div>
-            
-            <div class="input-group">
-                <input type="text" id="college" placeholder="e.g., Delhi University">
-                <div id="collegeError" class="error hidden">Please enter your college name</div>
-            </div>
-            <button class="btn" onclick="goToStep4()">Next</button>
-        </div>
-
-        <!-- Step 4: Department -->
-        <div id="step4" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-            </div>
-            <h1>Your Department?</h1>
-            <p class="progress-text">Step 4 of 6</p>
-            <div class="input-group">
-                <input type="text" id="department" placeholder="e.g., Computer Science">
-                <div id="deptError" class="error hidden">Please enter your department</div>
-            </div>
-            <button class="btn" onclick="goToStep5()">Next</button>
-        </div>
-
-        <!-- Step 5: Birthdate -->
-        <div id="step5" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-            </div>
-            <h1>Your Birth Date?</h1>
-            <p class="progress-text">Step 5 of 6</p>
-            <div class="input-group">
-                <label>Format: DD/MM (Day/Month)</label>
-                <input type="text" id="birthdate" placeholder="15/08" maxlength="5">
-                <div id="birthdateError" class="error hidden">Enter valid date (e.g., 15/08)</div>
-            </div>
-            <button class="btn" onclick="goToStep6()">Next</button>
-        </div>
-
-        <!-- Step 6: Crush Letter -->
-        <div id="step6" class="step hidden">
-            <div class="step-indicator">
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot completed"></div>
-                <div class="step-dot active"></div>
-            </div>
-            <h1>Crush's First Letter?</h1>
-            <p class="progress-text">Step 6 of 6</p>
-            <div class="input-group">
-                <label>Select the first letter of your crush's name</label>
-                <select id="crushLetter">
-                    <option value="">Select A-Z</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="G">G</option>
-                    <option value="H">H</option>
-                    <option value="I">I</option>
-                    <option value="J">J</option>
-                    <option value="K">K</option>
-                    <option value="L">L</option>
-                    <option value="M">M</option>
-                    <option value="N">N</option>
-                    <option value="O">O</option>
-                    <option value="P">P</option>
-                    <option value="Q">Q</option>
-                    <option value="R">R</option>
-                    <option value="S">S</option>
-                    <option value="T">T</option>
-                    <option value="U">U</option>
-                    <option value="V">V</option>
-                    <option value="W">W</option>
-                    <option value="X">X</option>
-                    <option value="Y">Y</option>
-                    <option value="Z">Z</option>
-                </select>
-                <div id="letterError" class="error hidden">Please select a letter</div>
-            </div>
-            <button class="btn" onclick="startCalculation()">Calculate Crush Name</button>
-        </div>
-
-        <!-- Calculation Screen -->
-        <div id="calculation" class="step hidden">
-            <h1>Calculating Your Crush...</h1>
-            <div class="loading" style="display: block;">
-                <p id="calcText">Analyzing name patterns...</p>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+        <div class="grid">
+            <!-- 1. Wait 10s -->
+            <a href="tools/global/wait-10-seconds.html" class="card card-image">
+                <div class="tag">#1 Viral</div>
+                <div class="card-img-bg"
+                    style="background-image: url('images/icons/icon_timer.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f9fa;">
                 </div>
-                <p style="color: #999; font-size: 14px;">Please wait...</p>
-            </div>
+                <div class="card-content">
+                    <div class="card-title">I Dare You to <br>Wait 10 Seconds</div>
+                    <div class="card-desc">90% of people fail this patience test.</div>
+                    <div class="card-btn">Play Now →</div>
+                </div>
+            </a>
+
+            <!-- 2. Future Message (Unique) -->
+            <a href="tools/global/future-message.html" class="card card-image">
+                <div class="tag blue">New</div>
+                <div class="card-img-bg" style="background-image: url('images/blog/future_crystal_ball.png');"></div>
+                <div class="card-content">
+                    <div class="card-title">Future Message <br>Generator ✉️</div>
+                    <div class="card-desc">Receive a text from your 2035 self.</div>
+                    <div class="card-btn">Open Message →</div>
+                </div>
+            </a>
+
+            <!-- 3. Brain Age (Unique) -->
+            <a href="tools/global/brain-age.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/blog/brain_psychology.png');"></div>
+                <div class="card-content">
+                    <div class="card-title">Brain Age Test 🧠</div>
+                    <div class="card-desc">Is your brain 18 or 80? Check now.</div>
+                    <div class="card-btn">Check Age →</div>
+                </div>
+            </a>
+
+            <!-- 4. 1% Club (Unique SVG) -->
+            <a href="tools/global/1-percent-test.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_trophy_gold.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">The 1% Club 🏆</div>
+                    <div class="card-desc">Only 1% of humans pass this logic test.</div>
+                    <div class="card-btn">Challenge →</div>
+                </div>
+            </a>
+
+            <!-- 5. Red Flag (Unique SVG) -->
+            <a href="tools/global/red-flag.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_red_flag_ill.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Red Flag Detector 🚩</div>
+                    <div class="card-desc">What is your toxic trait?</div>
+                    <div class="card-btn">Scan Now →</div>
+                </div>
+            </a>
+
+            <!-- 6. Rare Name (Unique SVG) -->
+            <a href="tools/global/rare-name.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_search_id.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">How Rare Is <br>Your Name? 🔍</div>
+                    <div class="card-desc">Name rarity score check.</div>
+                    <div class="card-btn">Search →</div>
+                </div>
+            </a>
+
+            <!-- 7. Personality (Unique SVG) -->
+            <a href="tools/global/personality-type.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_mask_ill.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Secret Personality 😳</div>
+                    <div class="card-desc">What people secretly think.</div>
+                    <div class="card-btn">Reveal →</div>
+                </div>
+            </a>
         </div>
 
-        <!-- Result Page -->
-        <div id="result" class="step hidden">
-            <h1>Your College Crush is ❤️</h1>
-            <div class="result-name" id="crushName"></div>
-            <p>This result is based on name vibration analysis and academic pattern matching.</p>
-            <p style="font-size: 14px; color: #999; margin-top: 10px;">Don't worry... ye sirf fun ke liye hai 😄</p>
-            
-            <!-- Bottom Ad - Shows on Result page -->
-            <div class="ad-container ad-bottom" id="adBottom"></div>
-            
-            <button class="btn" onclick="reset()" style="margin-top: 20px;">Try Again</button>
-            
-            <div class="share">
-                <p style="font-weight: bold;">👇 Share with your friends</p>
-                <button class="btn btn-whatsapp" onclick="shareWhatsApp()">📱 WhatsApp</button>
-                <button class="btn btn-copy" onclick="copyLink()">📋 Copy Link</button>
-            </div>
+
+        <!-- Indian Tools -->
+        <div class="section-title">
+            <span>🇮🇳</span>
+            <h2>Desi Favorites</h2>
         </div>
+
+        <div class="grid">
+            <!-- 1. College Crush (Unique) -->
+            <a href="tools/indian/college-crush.html" class="card card-image">
+                <div class="tag">Trending</div>
+                <div class="card-img-bg" style="background-image: url('images/blog/love_calculator_hero.png');"></div>
+                <div class="card-content">
+                    <div class="card-title">College Crush <br>Calculator ❤️</div>
+                    <div class="card-desc">Authentic vibration analysis of your crush.</div>
+                    <div class="card-btn">Calculate →</div>
+                </div>
+            </a>
+
+            <!-- 2. Log Kya Kahenge (Unique) -->
+            <a href="tools/indian/log-kya-kahenge.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/blog/viral_social_media.png');"></div>
+                <div class="card-content">
+                    <div class="card-title">Log Kya Kahenge? <br>Meter 😶‍🌫️</div>
+                    <div class="card-desc">Calculate your society pressure score.</div>
+                    <div class="card-btn">Check Score →</div>
+                </div>
+            </a>
+
+            <!-- 3. Shaadi (Unique SVG) -->
+            <a href="tools/indian/shaadi-kab-hogi.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_rings.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Shaadi Kab Hogi? 💍</div>
+                    <div class="card-desc">AI predicts your wedding year.</div>
+                    <div class="card-btn">Predict →</div>
+                </div>
+            </a>
+
+            <!-- 4. Maa Ka Favorite (Unique SVG) -->
+            <a href="tools/indian/maa-ka-favorite.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_mom.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Maa Ka Favorite? 👀</div>
+                    <div class="card-desc">Raja Beta or Kaamchor? Mom decides.</div>
+                    <div class="card-btn">Ask Mom →</div>
+                </div>
+            </a>
+
+            <!-- 5. Kitna Paisa (Unique SVG) -->
+            <a href="tools/indian/kitna-paisa.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_money_chart.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Kitna Paisa? 💰</div>
+                    <div class="card-desc">Your future net worth calculator.</div>
+                    <div class="card-btn">Check →</div>
+                </div>
+            </a>
+
+            <!-- 6. Friendship (Unique SVG) -->
+            <a href="tools/indian/friendship-test.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_friends.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Friendship Test 🤝</div>
+                    <div class="card-desc">Snake detector for friends.</div>
+                    <div class="card-btn">Test →</div>
+                </div>
+            </a>
+
+            <!-- 7. Ex Misses You (Unique SVG) -->
+            <a href="tools/indian/ex-misses-you.html" class="card card-image">
+                <div class="card-img-bg" style="background-image: url('images/svg/icon_broken_heart.svg');"></div>
+                <div class="card-content">
+                    <div class="card-title">Ex Misses You? 💔</div>
+                    <div class="card-desc">Does he/she still think of you?</div>
+                    <div class="card-btn">Check →</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Latest from Blog (Expanded) -->
+        <div class="section-title" style="margin-top: 60px;">
+            <span>📰</span>
+            <h2>Latest From Blog</h2>
+        </div>
+        <div id="blogPreview"
+            style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <a href="blog/how-college-crush-calculators-work.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/love_calculator_hero.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">How Crush Calculators Work</div>
+                    <div class="mini-blog-meta">Behind the Scenes</div>
+                </div>
+            </a>
+            <a href="blog/why-people-love-fun-prediction-websites.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/future_crystal_ball.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">Why We Love Predictions</div>
+                    <div class="mini-blog-meta">Psychology</div>
+                </div>
+            </a>
+            <a href="blog/top-10-viral-fun-tools-whatsapp.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/viral_social_media.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">Top 10 Viral Tools</div>
+                    <div class="mini-blog-meta">Viral Lists</div>
+                </div>
+            </a>
+            <!-- New rows -->
+            <a href="blog/one-percent-club-challenge.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/brain_psychology.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">The 1% Club Challenge</div>
+                    <div class="mini-blog-meta">Logic & IQ</div>
+                </div>
+            </a>
+            <a href="blog/red-flag-scanner-prank.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/security_privacy.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">What Is Your Red Flag?</div>
+                    <div class="mini-blog-meta">Personality</div>
+                </div>
+            </a>
+            <a href="blog/log-kya-kahenge-society.html" class="mini-blog-card">
+                <div class="mini-blog-img" style="background-image: url('images/blog/viral_social_media.png')"></div>
+                <div class="mini-blog-content">
+                    <div class="mini-blog-title">Log Kya Kahenge Meter</div>
+                    <div class="mini-blog-meta">Desi Satire</div>
+                </div>
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 50px;">
+            <p style="color: #999; margin-bottom: 10px;">And 9 more articles...</p>
+            <a href="blog.html" class="action-btn"
+                style="text-decoration:none; display:inline-block; width:auto; padding: 15px 40px; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);">View
+                All Blog Posts →</a>
+        </div>
+
+        <footer style="text-align: center; color: #aaa; padding: 40px 20px; border-top: 1px solid #eee;">
+            <h3>Feku.me</h3>
+            <p>Just for fun, laughs & psychological experiments.</p>
+            <div style="margin-top: 10px;">
+                <a href="blog.html" style="color: #6c5ce7; font-weight:bold; margin: 0 10px;">Blog</a>
+                <a href="#" style="color: #666; margin: 0 10px;">Privacy Policy</a>
+                <a href="#" style="color: #666; margin: 0 10px;">Terms</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2025 Feku.me</p>
+        </footer>
     </div>
 
-    <script>
-        // Ad initialization function
-        function loadAds() {
-            // Top ad loads on all pages
-            const topAdHtml = '<ins class="eas6a97888e" data-zoneid="5478590"></ins>';
-            document.getElementById('adTop').innerHTML = topAdHtml;
-            
-            // Check if middle ad container exists and load
-            const middleAd = document.getElementById('adMiddle');
-            if (middleAd && middleAd.innerHTML === '') {
-                const middleAdHtml = '<ins class="eas6a97888e" data-zoneid="5478592"></ins>';
-                middleAd.innerHTML = middleAdHtml;
-            }
-            
-            // Check if bottom ad container exists and load
-            const bottomAd = document.getElementById('adBottom');
-            if (bottomAd && bottomAd.innerHTML === '') {
-                const bottomAdHtml = '<ins class="eas6a97888e" data-zoneid="5478594"></ins>';
-                bottomAd.innerHTML = bottomAdHtml;
-            }
-        }
-
-        // Load ads on page load
-        window.addEventListener('load', loadAds);
-
-        function hideAll() {
-            document.querySelectorAll('.step').forEach(s => s.classList.add('hidden'));
-        }
-
-        function show(stepId) {
-            document.getElementById(stepId).classList.remove('hidden');
-            // Reload ads when showing new step
-            if (stepId === 'step3' || stepId === 'result') {
-                setTimeout(loadAds, 100);
-            }
-        }
-
-        function goToStep1() {
-            hideAll();
-            show('step1');
-        }
-
-        function goToStep2() {
-            const gender = document.getElementById('gender').value;
-            document.getElementById('genderError').classList.add('hidden');
-            
-            if (!gender) {
-                document.getElementById('genderError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('step2');
-            document.getElementById('name').focus();
-        }
-
-        function goToStep3() {
-            const name = document.getElementById('name').value.trim();
-            document.getElementById('nameError').classList.add('hidden');
-            
-            if (name.length < 2) {
-                document.getElementById('nameError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('step3');
-            document.getElementById('college').focus();
-        }
-
-        function goToStep4() {
-            const college = document.getElementById('college').value.trim();
-            document.getElementById('collegeError').classList.add('hidden');
-            
-            if (college.length < 2) {
-                document.getElementById('collegeError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('step4');
-            document.getElementById('department').focus();
-        }
-
-        function goToStep5() {
-            const department = document.getElementById('department').value.trim();
-            document.getElementById('deptError').classList.add('hidden');
-            
-            if (department.length < 2) {
-                document.getElementById('deptError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('step5');
-            document.getElementById('birthdate').focus();
-        }
-
-        function goToStep6() {
-            const birthdate = document.getElementById('birthdate').value.trim();
-            document.getElementById('birthdateError').classList.add('hidden');
-            
-            const datePattern = /^(\d{1,2})\/(\d{1,2})$/;
-            const dateMatch = birthdate.match(datePattern);
-            
-            if (!dateMatch) {
-                document.getElementById('birthdateError').textContent = 'Enter date as DD/MM (e.g., 15/08)';
-                document.getElementById('birthdateError').classList.remove('hidden');
-                return;
-            }
-            
-            const day = parseInt(dateMatch[1]);
-            const month = parseInt(dateMatch[2]);
-            
-            if (day < 1 || day > 31 || month < 1 || month > 12) {
-                document.getElementById('birthdateError').textContent = 'Day must be 1-31, Month must be 1-12';
-                document.getElementById('birthdateError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('step6');
-            document.getElementById('crushLetter').focus();
-        }
-
-        function startCalculation() {
-            const crushLetter = document.getElementById('crushLetter').value;
-            document.getElementById('letterError').classList.add('hidden');
-            
-            if (!crushLetter) {
-                document.getElementById('letterError').classList.remove('hidden');
-                return;
-            }
-            
-            hideAll();
-            show('calculation');
-            
-            const calcTexts = [
-                'Analyzing name patterns...',
-                'Processing college frequency...',
-                'Matching personality vibrations...',
-                'Running compatibility algorithm...',
-                'Finalizing your crush name...'
-            ];
-
-            let progress = 0;
-            let textIndex = 0;
-
-            const interval = setInterval(() => {
-                progress += 1;
-                document.getElementById('progressFill').style.width = progress + '%';
-                
-                if (progress % 20 === 0 && textIndex < calcTexts.length) {
-                    document.getElementById('calcText').textContent = calcTexts[textIndex];
-                    textIndex++;
-                }
-
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        generateResult();
-                        hideAll();
-                        show('result');
-                    }, 500);
-                }
-            }, 50);
-        }
-
-        function generateResult() {
-            const gender = document.getElementById('gender').value;
-            const name = document.getElementById('name').value.trim();
-            const college = document.getElementById('college').value.trim();
-            const department = document.getElementById('department').value.trim();
-            const birthdate = document.getElementById('birthdate').value.trim();
-            const crushLetter = document.getElementById('crushLetter').value;
-
-            const nameSum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-            const collegeSum = college.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-            const deptSum = department.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-            
-            const parts = birthdate.split('/');
-            const birthSum = parts.reduce((sum, num) => sum + parseInt(num), 0);
-            
-            const letterPos = crushLetter.charCodeAt(0) - 64;
-
-            const seed = (nameSum * 7 + collegeSum * 3 + deptSum * 5 + birthSum * 11 + letterPos * 13) % 1000;
-
-            const boyNames = [
-                'Aarav', 'Aditya', 'Arjun', 'Atharva', 'Arnav', 'Advait', 'Aniruddha', 'Ashwin', 'Avinash',
-                'Darshan', 'Dev', 'Dhruv', 'Ganesh', 'Harshal', 'Jay', 'Kunal', 'Karan', 'Lokesh',
-                'Mihir', 'Nikhil', 'Omkar', 'Pranav', 'Pratik', 'Rahul', 'Rohan', 'Rutvik', 'Sai',
-                'Sahil', 'Sameer', 'Siddharth', 'Tejas', 'Varun', 'Vedant', 'Vishal', 'Yash',
-                'Aman', 'Angad', 'Aryan', 'Ayush', 'Daksh', 'Gurpreet', 'Harman', 'Jatin', 'Kartik',
-                'Lakshay', 'Manav', 'Naveen', 'Piyush', 'Raghav', 'Rajat', 'Ravi', 'Rishabh', 'Shivam',
-                'Sumit', 'Tarun', 'Uday', 'Veer', 'Vikas', 'Vikram', 'Vivek', 'Yogesh',
-                'Aakash', 'Aravind', 'Deepak', 'Harish', 'Karthik', 'Krishna', 'Manoj',
-                'Nithin', 'Prasad', 'Pavan', 'Rakesh', 'Ramesh', 'Sanjay', 'Suresh',
-                'Surya', 'Vijay', 'Vinay', 'Vishnu', 'Akhil', 'Abhinav', 'Arun',
-                'Abhimanyu', 'Aniket', 'Arnab', 'Debasis', 'Dibyendu', 'Gourav', 'Indrajit', 'Joydeep',
-                'Parth', 'Pritam', 'Sayan', 'Soham', 'Soumya', 'Subham', 'Tanmay', 'Ujjwal',
-                'Chirag', 'Dhairya', 'Hardik', 'Hemant', 'Ishaan', 'Jignesh', 'Kaushal', 'Meet',
-                'Pragnesh', 'Ruchit', 'Shrey', 'Vihaan', 'Yuvraj', 'Zeel',
-                'Aaryan', 'Abeer', 'Ahaan', 'Amit', 'Ansh', 'Armaan', 'Ayaan', 'Bharat',
-                'Chaitanya', 'Chetan', 'Devesh', 'Eklavya', 'Faiz', 'Gagan', 'Himanshu',
-                'Irfan', 'Kabir', 'Laksh', 'Mayank', 'Mohit', 'Neeraj', 'Niraj',
-                'Om', 'Puneet', 'Rajesh', 'Rohit', 'Roshan', 'Samar', 'Sandeep',
-                'Satish', 'Shaurya', 'Shashank', 'Sourabh', 'Sudarshan', 'Tushar',
-                'Utkarsh', 'Vaibhav', 'Vansh', 'Yatin', 'Zeeshan',
-                'Advik', 'Ajay', 'Arvind', 'Balaji', 'Dinesh', 'Keshav', 'Lokendra',
-                'Madhan', 'Naresh', 'Prakash', 'Ravindra', 'Shankar', 'Srikanth',
-                'Tharun', 'Venkatesh', 'Yogendra'
-            ];
-
-            const girlNames = [
-                'Aisha', 'Ananya', 'Aditi', 'Akshara', 'Anushka', 'Aishwarya', 'Avani', 'Diya',
-                'Gauri', 'Isha', 'Janhavi', 'Khushi', 'Kriti', 'Manasi', 'Meera', 'Muskan',
-                'Neha', 'Nidhi', 'Pihu', 'Pooja', 'Pranali', 'Priya', 'Riddhi', 'Ruhi', 'Sakshi',
-                'Sanika', 'Sanvi', 'Shreya', 'Simran', 'Sneha', 'Tanvi', 'Tanya', 'Vaishnavi', 'Vedika',
-                'Aarohi', 'Anjali', 'Diksha', 'Garima', 'Gunjan', 'Ishita', 'Jiya', 'Kiara', 'Komal',
-                'Lavanya', 'Mahika', 'Megha', 'Naina', 'Navya', 'Palak', 'Riya', 'Ritika', 'Sahana',
-                'Sanya', 'Shikha', 'Shruti', 'Swati', 'Trishna', 'Vanshika', 'Vidya', 'Yamini',
-                'Aarya', 'Amrita', 'Aparna', 'Bhavana', 'Divya', 'Harini', 'Kavya', 'Keerthi',
-                'Lakshmi', 'Madhuri', 'Meenakshi', 'Nithya', 'Pavithra', 'Poornima', 'Preethi', 'Radhika',
-                'Ramya', 'Sanjana', 'Shruthi', 'Sowmya', 'Swetha', 'Varsha', 'Vennela', 'Yamuna',
-                'Arpita', 'Debolina', 'Drishti', 'Ishani', 'Juhi', 'Moumita', 'Prerna', 'Ria',
-                'Rupa', 'Sohini', 'Supriya', 'Tithi', 'Trisha', 'Urvi', 'Anwesha', 'Payel',
-                'Avni', 'Charmi', 'Dhriti', 'Hiral', 'Janvi', 'Kashvi', 'Khyati', 'Mahi',
-                'Myra', 'Niyati', 'Ovi', 'Raahi', 'Sana', 'Urja', 'Zara',
-                'Aahana', 'Aashna', 'Aayushi', 'Ami', 'Anvika', 'Arya', 'Barkha', 'Chaitali',
-                'Damini', 'Devika', 'Eesha', 'Ekta', 'Falak', 'Gia', 'Hansika', 'Inaaya',
-                'Ira', 'Kanishka', 'Krisha', 'Lisha', 'Mrunal', 'Nandini', 'Nikita',
-                'Ojasvi', 'Pari', 'Pankhuri', 'Rashmi', 'Reema', 'Roshni', 'Saisha',
-                'Samaira', 'Sharika', 'Sharmila', 'Shivani', 'Siya', 'Srushti', 'Tara',
-                'Tejaswi', 'Urvashi', 'Veda', 'Yashika', 'Ziya', 'Alisha', 'Ankita',
-                'Bhavya', 'Charu', 'Eshita', 'Kritika', 'Mitali', 'Nupur', 'Rupal',
-                'Sonal', 'Tanisha', 'Yukti'
-            ];
-
-            const crushNames = gender === 'male' ? girlNames : boyNames;
-
-            let matchingNames = crushNames.filter(n => n.startsWith(crushLetter));
-            if (matchingNames.length === 0) {
-                matchingNames = crushNames;
-            }
-            const nameIndex = seed % matchingNames.length;
-            const crushName = matchingNames[nameIndex];
-
-            document.getElementById('crushName').textContent = crushName;
-    }
-
-    function reset() {
-        document.querySelectorAll('input, select').forEach(el => el.value = '');
-        document.querySelectorAll('.error').forEach(el => el.classList.add('hidden'));
-        document.getElementById('progressFill').style.width = '0%';
-        
-        hideAll();
-        show('intro');
-    }
-
-    function shareWhatsApp() {
-        const crushName = document.getElementById('crushName').textContent;
-        const text = encodeURIComponent(`❤️ Mera college crush ka naam nikla: ${crushName}!
-Tumhara bhi try karo 👇
-${window.location.href});             window.open(https://wa.me/?text=${text}`, '_blank');
-}
-    function copyLink() {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert('✅ Link copied! Share on Instagram Story.');
-        }).catch(() => {
-            alert('❌ Could not copy link. Please copy manually: ' + window.location.href);
-        });
-    }
-</script>
+    <!-- Floating Share Button Script -->
+    <a href="javascript:void(0)" onclick="utils.shareWhatsApp('Feku.me - Viral Fun Tools!')" class="fixed-share-bar">
+        <span>📤 Share App on WhatsApp</span>
+    </a>
+    <script src="js/main.js"></script>
 </body>
-</html></parameter>
+
+</html>

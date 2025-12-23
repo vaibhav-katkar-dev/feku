@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Loyalty Test 🤝</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Friendship Test 🤝</h1>
+            <p>Is your bestie actually a snake? 🐍</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="form">
+                <div class="input-group">
+                    <label>Friend's Name</label>
+                    <input type="text" id="fname" placeholder="Best friend's name">
+                </div>
+                <div class="input-group">
+                    <label>How long have you known them?</label>
+                    <select>
+                        <option>Less than 1 year</option>
+                        <option>1-5 Years</option>
+                        <option>Childhood Friends</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="test()">Start Loyalty Test</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Checking chat history...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Loyalty Score:</h2>
+                <div class="result-value" id="score"></div>
+                <p id="msg"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Another Friend</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function test() {
+            if (!document.getElementById('fname').value) return alert("Enter Name!");
+            document.getElementById('form').classList.add('hidden');
+
+            utils.simulateLoading('progress', 2500, () => {
+                const score = utils.random(10, 100);
+                document.getElementById('score').textContent = score + "%";
+
+                const msgEl = document.getElementById('msg');
+                if (score < 40) msgEl.textContent = "Be careful... 🐍";
+                else if (score < 80) msgEl.textContent = "Good friend! ✅";
+                else msgEl.textContent = "Best Friends Forever! 💖";
+
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const s = document.getElementById('score').textContent;
+            const f = document.getElementById('fname').value;
+            utils.shareWhatsApp(`I tested ${f}'s loyalty and they scored ${s}! Check your friends: `);
+        }
+    </script>
+</body>
+
+</html>

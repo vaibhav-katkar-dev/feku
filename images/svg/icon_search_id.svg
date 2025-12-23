@@ -1,0 +1,17 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#74b9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0984e3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <!-- ID Card -->
+  <rect x="100" y="80" width="200" height="140" fill="white" rx="10"/>
+  <rect x="120" y="100" width="60" height="60" fill="#dfe6e9" rx="30"/>
+  <rect x="190" y="110" width="90" height="10" fill="#b2bec3" rx="2"/>
+  <rect x="190" y="130" width="60" height="10" fill="#b2bec3" rx="2"/>
+  <!-- Magnifying Glass -->
+  <circle cx="280" cy="200" r="40" fill="rgba(162, 155, 254,0.5)" stroke="#6c5ce7" stroke-width="5"/>
+  <line x1="310" y1="230" x2="340" y2="260" stroke="#6c5ce7" stroke-width="10" stroke-linecap="round"/>
+</svg>

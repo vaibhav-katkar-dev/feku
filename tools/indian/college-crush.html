@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Crush Name Generator ❤️</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Crush Generator ❤️</h1>
+            <p>Science + Vibration Analysis</p>
+        </div>
+
+        <div class="tool-container">
+            <!-- Step 1: Gender -->
+            <div id="step1">
+                <div class="input-group">
+                    <label>I am a:</label>
+                    <select id="gender">
+                        <option value="male">Boy 👦</option>
+                        <option value="female">Girl 👧</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="next(1)">Next</button>
+            </div>
+
+            <!-- Step 2: Name -->
+            <div id="step2" class="hidden">
+                <div class="input-group">
+                    <label>My Name:</label>
+                    <input type="text" id="name" placeholder="Enter Full Name">
+                </div>
+                <button class="action-btn" onclick="next(2)">Next</button>
+            </div>
+
+            <!-- Step 3: College -->
+            <div id="step3" class="hidden">
+                <div class="input-group">
+                    <label>College Name:</label>
+                    <input type="text" id="college" placeholder="e.g. DU, Mumbai Univ">
+                </div>
+                <button class="action-btn" onclick="next(3)">Next</button>
+            </div>
+
+            <!-- Step 4: Letter -->
+            <div id="step4" class="hidden">
+                <div class="input-group">
+                    <label>Crush's First Letter:</label>
+                    <select id="letter">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                        <option>K</option>
+                        <option>L</option>
+                        <option>M</option>
+                        <option>N</option>
+                        <option>O</option>
+                        <option>P</option>
+                        <option>Q</option>
+                        <option>R</option>
+                        <option>S</option>
+                        <option>T</option>
+                        <option>U</option>
+                        <option>V</option>
+                        <option>W</option>
+                        <option>X</option>
+                        <option>Y</option>
+                        <option>Z</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="calculate()">Reveal Crush Name</button>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" style="display:none;">
+                <p id="loadingText">Analyzing vibrations...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div id="result" class="result-box">
+                <h2>Your Crush Is:</h2>
+                <div class="result-value" id="crushName"></div>
+                <p>Calculated with 99% Love Accuracy!</p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function next(step) {
+            // Validation
+            if (step === 2 && document.getElementById('name').value.length < 2) return alert("Enter valid name");
+            if (step === 3 && document.getElementById('college').value.length < 2) return alert("Enter college name");
+
+            document.getElementById(`step${step}`).classList.add('hidden');
+            document.getElementById(`step${step + 1}`).classList.remove('hidden');
+        }
+
+        function calculate() {
+            document.getElementById('step4').classList.add('hidden');
+            const letter = document.getElementById('letter').value;
+            const gender = document.getElementById('gender').value;
+
+            // Fake Indian names database
+            const boyNames = ["Aarav", "Rohan", "Vikram", "Aditya", "Kabir", "Arjun", "Siddharth", "Rahul", "Varun", "Karan"];
+            const girlNames = ["Ananya", "Riya", "Priya", "Sneha", "Kavya", "Ishita", "Neha", "Pooja", "Simran", "Zara"];
+
+            // Filter by letter if possible, else random
+            let list = gender === 'male' ? girlNames : boyNames; // Opposite gender
+            let matches = list.filter(n => n.startsWith(letter));
+
+            // If no match in small DB, generate a generic one
+            let result = matches.length > 0 ? utils.sample(matches) : letter + "...... (Secret)";
+
+            // Add some funny titles
+            if (Math.random() > 0.5) result += " ❤️";
+
+            utils.simulateLoading('progress', 3000, () => {
+                document.getElementById('crushName').textContent = result;
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const name = document.getElementById('crushName').textContent;
+            utils.shareWhatsApp(`The site calculated my college crush name is: ${name} ❤️ Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

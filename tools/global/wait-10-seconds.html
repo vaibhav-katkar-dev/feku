@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Dare You to Wait 10 Seconds 😈</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>I Dare You to Wait 10s 😈</h1>
+            <p>Do not touch the button until the timer ends!</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="gameScreen">
+                <div id="timer" style="font-size: 5rem; font-weight: 800; color: #ff7675; margin: 20px 0;">10.00</div>
+                <p id="instruction" style="margin-bottom: 20px;">HOLD the button below. If you let go, you lose.</p>
+
+                <button id="actionBtn" class="action-btn" style="user-select: none; -webkit-user-select: none;">HOLD ME!
+                    😱</button>
+            </div>
+
+            <div id="resultScreen" class="result-box">
+                <h2 id="resultTitle"></h2>
+                <div id="resultMessage" class="result-value" style="font-size: 1.5rem;"></div>
+                <p id="resultSub" style="color: #636e72;"></p>
+                <button class="action-btn" onclick="location.reload()" style="margin-top: 20px;">Try Again</button>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp"
+                        onclick="utils.shareWhatsApp('I actually waited 10 seconds! Can you? 😈')">
+                        Share WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ad Placeholder -->
+            <div class="ad-slot"><!-- Ad Code --></div>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('actionBtn');
+        const timerDisplay = document.getElementById('timer');
+        const gameScreen = document.getElementById('gameScreen');
+        const resultScreen = document.getElementById('resultScreen');
+
+        let timeLeft = 10.00;
+        let interval;
+        let isHolding = false;
+
+        function fail(reason) {
+            clearInterval(interval);
+            gameScreen.style.display = 'none';
+            resultScreen.classList.add('show');
+            document.getElementById('resultTitle').textContent = "YOU FAILED! 🤣";
+            document.getElementById('resultTitle').style.color = "#d63031";
+            document.getElementById('resultMessage').textContent = reason;
+            document.getElementById('resultSub').textContent = "You have 0 patience.";
+        }
+
+        function wim() {
+            clearInterval(interval);
+            gameScreen.style.display = 'none';
+            resultScreen.classList.add('show');
+            document.getElementById('resultTitle').textContent = "LEGEND! 🏆";
+            document.getElementById('resultTitle').style.color = "#00b894";
+            document.getElementById('resultMessage').textContent = "You actually did it!";
+            document.getElementById('resultSub').textContent = "Most people give up at 3 seconds.";
+        }
+
+        function startTimer() {
+            isHolding = true;
+            btn.textContent = "DON'T LET GO!";
+            btn.style.background = "#d63031";
+
+            interval = setInterval(() => {
+                timeLeft -= 0.01;
+                timerDisplay.textContent = timeLeft.toFixed(2);
+
+                // TROLL: Randomly move the button slightly to scare them
+                if (Math.random() > 0.95) {
+                    const offset = (Math.random() - 0.5) * 10;
+                    btn.style.transform = `translateX(${offset}px)`;
+                }
+
+                if (timeLeft <= 0) {
+                    wim();
+                }
+            }, 10);
+        }
+
+        function stopTimer() {
+            if (!isHolding) return;
+            isHolding = false;
+            clearInterval(interval);
+
+            if (timeLeft > 0) {
+                fail(`You gave up with ${timeLeft.toFixed(2)}s left!`);
+            }
+        }
+
+        // Mouse/Touch Events
+        btn.addEventListener('mousedown', startTimer);
+        btn.addEventListener('touchstart', (e) => { e.preventDefault(); startTimer(); });
+
+        btn.addEventListener('mouseup', stopTimer);
+        btn.addEventListener('touchend', stopTimer);
+        btn.addEventListener('mouseleave', stopTimer);
+    </script>
+</body>
+
+</html>

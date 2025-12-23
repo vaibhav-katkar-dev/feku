@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does Ex Miss You? 😶‍🌫️</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Ex Still Misses You? 😶‍🌫️</h1>
+            <p>Truth Detector</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="form">
+                <div class="input-group">
+                    <label>Ex's Name (We keep it secret)</label>
+                    <input type="text" id="exName" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label>Reason for Breakup</label>
+                    <select>
+                        <option>It was complicated</option>
+                        <option>They cheated</option>
+                        <option>Long distance</option>
+                        <option>Parents</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="check()">Scan Their Brain</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Tracking their Instagram activity...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Result:</h2>
+                <div class="result-value" id="missVal"></div>
+                <p id="advice"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function check() {
+            if (document.getElementById('exName').value.length < 2) return alert("Enter Ex's Name!");
+            document.getElementById('form').classList.add('hidden');
+
+            utils.simulateLoading('progress', 3000, () => {
+                const percent = utils.random(0, 100);
+                document.getElementById('missVal').textContent = `${percent}% Missing You`;
+
+                const adviceEl = document.getElementById('advice');
+                if (percent > 80) adviceEl.textContent = "They definitely stalk your profile! 👀";
+                else if (percent > 40) adviceEl.textContent = "They think about you sometimes. 🤷‍♂️";
+                else adviceEl.textContent = "They moved on. You should too. 💅";
+
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const res = document.getElementById('missVal').textContent;
+            utils.shareWhatsApp(`Omg! My Ex is ${res}! Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Ka Favorite Beta/Beti 👀</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Maa Ka Favorite? 👀</h1>
+            <p>Are you Raja Beta/Rani Beti or Kaamchor?</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="inp">
+                <div class="input-group">
+                    <label>Do you wash dishes?</label>
+                    <select>
+                        <option>Yes, always</option>
+                        <option>Only when forced</option>
+                        <option>Never</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>How many times do you call home?</label>
+                    <select>
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                        <option>When I need money</option>
+                    </select>
+                </div>
+                <button class="action-btn" onclick="calc()">Check Status</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Asking Mommy...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>You Are:</h2>
+                <div class="result-value" id="title"></div>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()" style="margin-top: 20px;">Check Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calc() {
+            document.getElementById('inp').style.display = 'none';
+            utils.simulateLoading('progress', 2000, () => {
+                const titles = [
+                    "Raja Beta / Rani Beti 👑 (Favorite)",
+                    "Naalayak! 😤 (Get out of house)",
+                    "Kaamchor 🧹 (Do some work)",
+                    "Adopted? 🧐 (Just kidding)"
+                ];
+
+                document.getElementById('title').textContent = utils.sample(titles);
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const t = document.getElementById('title').textContent;
+            utils.shareWhatsApp(`Mom says I am: ${t} 😂 Check your status: `);
+        }
+    </script>
+</body>
+
+</html>

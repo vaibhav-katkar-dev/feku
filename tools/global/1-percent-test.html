@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only 1% Can Pass This Test 🧪</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>The 1% Club Test 🧪</h1>
+            <p>99% of people fail. Can you join the 1%?</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="quiz-area">
+                <p class="mb-2" id="q-text">Level 1: Don't Press the RED button.</p>
+                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                    <button class="action-btn" style="background:#2ecc71;" onclick="pass(1)">Green Button</button>
+                    <button class="action-btn" style="background:#e74c3c;" onclick="fail()">Red Button</button>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Result:</h2>
+                <div class="result-value" id="resTitle"></div>
+                <p id="resDesc"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share Score</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()" style="margin-top: 20px;">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let level = 1;
+
+        function pass(lvl) {
+            if (lvl === 1) {
+                document.getElementById('q-text').textContent = "Level 2: Quick! Press the button that is NOT a square.";
+                const area = document.getElementById('quiz-area');
+                area.innerHTML = `
+                    <p class="mb-2">Level 2: Click the CIRCLE.</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
+                        <div onclick="fail()" style="width:60px; height:60px; background:blue; cursor:pointer;"></div>
+                        <div onclick="win()" style="width:60px; height:60px; background:red; border-radius:50%; cursor:pointer;"></div>
+                        <div onclick="fail()" style="width:60px; height:60px; background:green; cursor:pointer;"></div>
+                    </div>
+                `;
+            }
+        }
+
+        function fail() {
+            showRes("FAILED ❌", "You are part of the 99%. Sad.");
+        }
+
+        function win() {
+            showRes("PASSED! 🏆", "Welcome to the 1% Club. You are a genius.");
+        }
+
+        function showRes(title, desc) {
+            document.getElementById('quiz-area').style.display = 'none';
+            document.getElementById('resTitle').textContent = title;
+            document.getElementById('resDesc').textContent = desc;
+            document.getElementById('result').classList.add('show');
+        }
+
+        function shareResult() {
+            const t = document.getElementById('resTitle').textContent;
+            utils.shareWhatsApp(`I took the 1% Test and I ${t} Try it: `);
+        }
+    </script>
+</body>
+
+</html>

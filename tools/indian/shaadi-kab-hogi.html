@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaadi Kab Hogi? 💍</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Shaadi Kab Hogi? 💍</h1>
+            <p>AI Marriage Prediction System</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="form">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" id="name" placeholder="Your Name">
+                </div>
+                <div class="input-group">
+                    <label>Current Age</label>
+                    <input type="number" id="age" placeholder="e.g. 21">
+                </div>
+                <button class="action-btn" onclick="predict()">Check Date</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Consulting Pundit Ji (AI)...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Wedding Bells In:</h2>
+                <div class="result-value" id="year"></div>
+                <p id="funnyComment"></p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Another</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function predict() {
+            const age = parseInt(document.getElementById('age').value);
+            const name = document.getElementById('name').value;
+
+            if (!age || !name) return alert("Fill all details!");
+
+            document.getElementById('form').classList.add('hidden');
+
+            utils.simulateLoading('progress', 2500, () => {
+                const yearsToAdd = utils.random(2, 10);
+                const weddingYear = new Date().getFullYear() + yearsToAdd;
+
+                document.getElementById('year').textContent = `Year ${weddingYear}`;
+
+                const comments = [
+                    "Start saving money! 💸",
+                    "Your parents act fast! 🏃‍♂️",
+                    "Enjoy freedom while it lasts! 😂",
+                    "Invite me to the Sangeet! 💃"
+                ];
+
+                document.getElementById('funnyComment').textContent = utils.sample(comments);
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const y = document.getElementById('year').textContent;
+            utils.shareWhatsApp(`My Shaadi is predicted in ${y}! 💍 Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

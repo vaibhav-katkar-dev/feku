@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Message Generator ✉️</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Future Message ✉️</h1>
+            <p>Incoming transmission from Year 2035...</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="inputForm">
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" id="name" placeholder="Name">
+                </div>
+                <button class="action-btn" onclick="generate()">Receive Message</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Connecting to Time Server...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <div
+                    style="background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; margin-bottom: 15px;">
+                    <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px;">FROM: YOU (2035) | TO: YOU (2024)
+                    </p>
+                    <p id="messageText" style="font-family: monospace; font-size: 1.1rem; color: #333;"></p>
+                </div>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "Hey! Stop worrying about that thing. You're rich now. Like, really rich. 💰",
+            "Please cancel that gym membership, we never used it. 🍕",
+            "Invest in electric flying cars. Trust me.",
+            "You finally met the love of your life. They were right in front of you.",
+            "Remember that embarrassing thing you did? Yeah, nobody remembers it but you.",
+            "We are happy. Content. and we finally got a dog! 🐶",
+            "Stop scrolling and go to sleep! - Sent from your iPhone 25"
+        ];
+
+        function generate() {
+            const name = document.getElementById('name').value;
+            if (!name) return alert("Enter name!");
+
+            document.getElementById('inputForm').classList.add('hidden');
+
+            utils.simulateLoading('progress', 2000, () => {
+                const msg = utils.sample(messages);
+                document.getElementById('messageText').textContent = `"${msg}"`;
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const msg = document.getElementById('messageText').textContent;
+            utils.shareWhatsApp(`My future self sent me this message: ${msg} 😂 Check yours: `);
+        }
+    </script>
+</body>
+
+</html>

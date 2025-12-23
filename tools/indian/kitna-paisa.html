@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitna Paisa Banega? 💰</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="../../js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../../index.html" style="text-decoration: none; color: #6c5ce7; font-weight: bold;">← Back</a>
+            <h1>Kitna Paisa Banega? 💰</h1>
+            <p>Future Net Worth Calculator</p>
+        </div>
+
+        <div class="tool-container">
+            <div id="form">
+                <div class="input-group">
+                    <label>Current City</label>
+                    <input type="text" id="city" placeholder="e.g. Mumbai">
+                </div>
+                <div class="input-group">
+                    <label>Dream Car</label>
+                    <input type="text" placeholder="e.g. Thar, BMW">
+                </div>
+                <button class="action-btn" onclick="calc()">Calculate Wealth</button>
+            </div>
+
+            <div id="loader" style="display:none;">
+                <p>Analyzing stock market & luck...</p>
+                <div class="loader-bar">
+                    <div class="loader-progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div id="result" class="result-box">
+                <h2>Your Net Worth in 2030:</h2>
+                <div class="result-value" id="money"></div>
+                <p>Don't forget us when you are rich! 🤑</p>
+
+                <div class="share-section">
+                    <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()"
+                    style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calc() {
+            if (!document.getElementById('city').value) return alert("Enter City!");
+            document.getElementById('form').classList.add('hidden');
+
+            utils.simulateLoading('progress', 2000, () => {
+                const amounts = ["₹50 Crores", "₹100 Crores", "₹500 (Only)", "₹10 Lacs", "$1 Billion", "Zero (Sanyasi)"];
+                document.getElementById('money').textContent = utils.sample(amounts);
+                document.getElementById('result').classList.add('show');
+            });
+        }
+
+        function shareResult() {
+            const m = document.getElementById('money').textContent;
+            utils.shareWhatsApp(`My Future Net Worth is ${m}! Check yours: `);
+        }
+    </script>
+</body>
+
+</html>
