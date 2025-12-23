@@ -3,6 +3,8 @@
   <!-- Main Pages -->
   <url><loc>https://feku.me/</loc><lastmod>2025-01-01</lastmod><priority>1.0</priority></url>
   <url><loc>https://feku.me/blog.html</loc><lastmod>2025-01-01</lastmod><priority>0.8</priority></url>
+  <url><loc>https://feku.me/privacy-policy.html</loc><priority>0.5</priority></url>
+  <url><loc>https://feku.me/terms.html</loc><priority>0.5</priority></url>
   
   <!-- Blog Posts -->
   <url><loc>https://feku.me/blog/how-college-crush-calculators-work.html</loc><priority>0.7</priority></url>
