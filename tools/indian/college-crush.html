@@ -22,6 +22,8 @@
         </div>
 
         <div class="tool-container">
+            <!-- Ad visible on load -->
+            <div id="ad-start" style="min-height:260px; margin-bottom:20px; text-align:center;" class="ad-slot"></div>
             <!-- Step 1: Gender -->
             <div id="step1">
                 <div class="input-group">
@@ -98,16 +100,21 @@
 
             <!-- Result -->
             <div id="result" class="result-box">
+            <!-- Primary Ad (300x250) -->
+            <div id="ad-primary" style="min-height:260px; margin-bottom:15px;" class="ad-slot"></div>
                 <h2>Your Crush Is:</h2>
                 <div class="result-value" id="crushName"></div>
                 <p>Calculated with 99% Love Accuracy!</p>
 
+                <div id="ad-secondary" style="min-height:100px; margin-top:20px;" class="ad-slot"></div>
                 <div class="share-section">
                     <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
                 </div>
                 <button class="action-btn" onclick="location.reload()"
                     style="margin-top: 20px; background: #dfe6e9; color: #333;">Try Again</button>
             </div>
+
+            
         </div>
     </div>
 
@@ -152,6 +159,23 @@
             utils.shareWhatsApp(`The site calculated my college crush name is: ${name} ❤️ Check yours: `);
         }
     </script>
+
+    <footer style="text-align: center; color: #aaa; padding: 40px 20px; border-top: 1px solid #eee; margin-top: 50px;">
+        <div style="margin-top: 10px;">
+            <a href="../../blog.html" style="color: #6c5ce7; font-weight:bold; margin: 0 10px;">Blog</a>
+            <a href="https://www.instagram.com/feku.me" target="_blank" style="color: #E1306C; font-weight:bold; margin: 0 10px;">Instagram</a>
+            <a href="../../privacy-policy.html" style="color: #666; margin: 0 10px;">Privacy Policy</a>
+            <a href="../../terms.html" style="color: #666; margin: 0 10px;">Terms</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2025 Feku.me</p>
+    </footer>
+    
+    <!-- Floating Share Button -->
+    <a href="javascript:void(0)" onclick="utils.shareWhatsApp('Check this viral tool on Feku.me! 🤯')" class="fixed-share-bar">
+        <span>📤 Share on WhatsApp</span>
+    </a>
+    
+<script src="https://pl28318757.effectivegatecpm.com/bb/70/a4/bb70a4d84f951cf3190d767b9e8197f5.js"></script>
 </body>
 
 </html>

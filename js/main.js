@@ -51,45 +51,110 @@ const utils = {
 
     // SAFE AD MANAGER
     triggerAds: () => {
-        console.log("Checking Ad Trigger for path:", window.location.pathname);
+        console.log("Initializing Ad Strategy: Start, Primary Top, Secondary Native, Push Bottom");
 
-        // STRICT SAFETY CHECK: Only allow on tool pages
-        // Also allow local testing paths if they contain 'tools'
-        if (!window.location.href.includes('/tools/')) {
-            console.log("Ads blocked: URL does not contain '/tools/'");
-            return;
+        // 0. START AD (Immediate Load)
+        // This appears above the tool input form on load
+        const startContainer = document.getElementById('ad-start');
+        if (startContainer && !startContainer.hasChildNodes()) {
+            console.log("Injecting Start Banner...");
+            const bannerDiv = document.createElement('div');
+            bannerDiv.className = 'ad-banner';
+            bannerDiv.style.margin = '0 auto';
+            bannerDiv.style.textAlign = 'center';
+
+            const configScript = document.createElement('script');
+            configScript.textContent = `
+                atOptions = {
+                    'key' : 'de6d50d40bf5b4c651a3687dddad8b5f',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            `;
+            bannerDiv.appendChild(configScript);
+
+            const invokeScript = document.createElement('script');
+            invokeScript.src = "https://www.highperformanceformat.com/de6d50d40bf5b4c651a3687dddad8b5f/invoke.js";
+            bannerDiv.appendChild(invokeScript);
+
+            startContainer.appendChild(bannerDiv);
         }
 
-        // Prevent double loading
-        if (window.adsLoaded) {
-            console.log("Ads already loaded.");
-            return;
+        // 1. PRIMARY BANNER (Above Result / Top of Result Box)
+        // This triggers when result is shown
+        const primaryContainer = document.getElementById('ad-primary');
+        if (primaryContainer && !primaryContainer.hasChildNodes()) {
+            console.log("Injecting Primary Banner (Result)...");
+            const bannerDiv = document.createElement('div');
+            bannerDiv.className = 'ad-banner';
+            bannerDiv.style.margin = '0 auto 20px auto';
+            bannerDiv.style.textAlign = 'center';
+
+            const configScript = document.createElement('script');
+            configScript.textContent = `
+                atOptions = {
+                    'key' : 'de6d50d40bf5b4c651a3687dddad8b5f',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            `;
+            bannerDiv.appendChild(configScript);
+
+            const invokeScript = document.createElement('script');
+            invokeScript.src = "https://www.highperformanceformat.com/de6d50d40bf5b4c651a3687dddad8b5f/invoke.js";
+            bannerDiv.appendChild(invokeScript);
+
+            primaryContainer.appendChild(bannerDiv);
         }
-        window.adsLoaded = true;
 
-        console.log("Injecting Ad Scripts now...");
+        // 2. SECONDARY NATIVE BANNER (Below Result)
+        const secondaryContainer = document.getElementById('ad-secondary');
+        if (secondaryContainer && !secondaryContainer.hasChildNodes()) {
+            console.log("Injecting Secondary Native...");
+            const nativeDiv = document.createElement('div');
+            nativeDiv.className = 'ad-native';
+            nativeDiv.style.margin = '20px auto 0 auto';
+            nativeDiv.style.textAlign = 'center';
 
-        // 1. IN-PAGE PUSH (Zone: 10364384)
-        (function (s) {
-            s.dataset.zone = '10364384';
-            s.src = 'https://nap5k.com/tag.min.js';
-        })(document.body.appendChild(document.createElement('script')));
+            const nativeScript = document.createElement('script');
+            nativeScript.async = true;
+            nativeScript.dataset.cfasync = "false";
+            nativeScript.src = "https://pl28318610.effectivegatecpm.com/aaa3b3f707f38259e681465605bffd86/invoke.js";
 
-        // 2. VIGNETTE BANNER (Zone: 10364375)
-        // if (!sessionStorage.getItem('vignetteShown')) {
-        (function (s) {
-            s.dataset.zone = '10364375';
-            s.src = 'https://gizokraijaw.net/vignette.min.js';
-        })(document.body.appendChild(document.createElement('script')));
-        // sessionStorage.setItem('vignetteShown', 'true');
-        // }
+            const nativeContainer = document.createElement('div');
+            nativeContainer.id = "container-aaa3b3f707f38259e681465605bffd86";
+
+            nativeDiv.appendChild(nativeScript);
+            nativeDiv.appendChild(nativeContainer);
+            secondaryContainer.appendChild(nativeDiv);
+        }
+
+        // 3. PUSH NOTIFICATION
+        // Now hardcoded in HTML for better reliability.
+        // Script: bb70a4d84f951cf3190d767b9e8197f5.js
+
+        // SAFE AUTO-SCROLL (To Primary Ad)
+        const resultBox = document.getElementById('result');
+        // Only scroll if result is clearly visible and not just hidden in DOM
+        // Our CSS uses 'show' class to display result
+        // We check if it has 'show' OR if we just injected primary container which means user just completed action
+        if (resultBox && (resultBox.classList.contains('show') || resultBox.style.display === 'block')) {
+            setTimeout(() => {
+                resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 800);
+        }
     }
 };
 
-// AUTO-TRIGGER ADS ON TOOL PAGES (Fast Loading)
+// AUTO-TRIGGER ADS (Will load Start Ad immediately)
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => utils.triggerAds());
 } else {
+    // If not on a result page (just loaded), this will just load Start Ad
     utils.triggerAds();
 }
 

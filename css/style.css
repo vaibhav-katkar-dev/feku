@@ -484,3 +484,17 @@ select {
         transform: translateX(-50%) translateY(-5px);
     }
 }
+
+/* Ad Container - Prevents Layout Shift */
+#ad-container {
+    min-height: 280px;
+    /* Reserves space for 250px ad + margins */
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
