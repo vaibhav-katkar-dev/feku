@@ -482,12 +482,14 @@ select {
     box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
     font-weight: bold;
     z-index: 1000;
-    display: flex;
+    display: none;
+    /* Hidden by default, JS will show it */
     align-items: center;
     gap: 10px;
     cursor: pointer;
     animation: bounce 2s infinite;
     text-decoration: none;
+    transition: opacity 0.5s ease;
 }
 
 @keyframes bounce {

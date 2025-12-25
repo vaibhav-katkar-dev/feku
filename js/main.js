@@ -189,16 +189,77 @@ Try kar aur mujhe bata tera kya result aaya! 👇`;
                 resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 800);
         }
+    },
+
+    // Floating Share Bar Control
+    initShareBar: () => {
+        const shareBar = document.querySelector('.fixed-share-bar');
+        if (shareBar) {
+            // Ensure it's hidden initially
+            shareBar.style.display = 'none';
+            shareBar.style.opacity = '0';
+            shareBar.style.transition = 'opacity 0.5s ease-in-out';
+
+            // Show after 3 seconds
+            setTimeout(() => {
+                shareBar.style.display = 'flex';
+                // Trigger reflow for transition
+                shareBar.offsetHeight;
+                shareBar.style.opacity = '1';
+
+                // Hide after another 10 seconds (total 13s)
+                setTimeout(() => {
+                    shareBar.style.opacity = '0';
+                    setTimeout(() => {
+                        shareBar.style.display = 'none';
+                    }, 500);
+                }, 10000);
+            }, 3000);
+        }
+    },
+
+    // Inject Blog Ads (Small Native Banners)
+    injectBlogAds: () => {
+        const articleBody = document.querySelector('.article-body');
+        if (articleBody) {
+            console.log("Injecting Native Ads into Blog...");
+
+            // Create Ad Container
+            const adContainer = document.createElement('div');
+            adContainer.className = 'blog-native-ad';
+            adContainer.style.margin = '20px 0';
+            adContainer.style.textAlign = 'center';
+            adContainer.style.minHeight = '100px';
+
+            // Adsterra Native Code
+            const script = document.createElement('script');
+            script.async = true;
+            script.dataset.cfasync = "false";
+            script.src = "https://pl28318610.effectivegatecpm.com/aaa3b3f707f38259e681465605bffd86/invoke.js";
+
+            const div = document.createElement('div');
+            div.id = "container-aaa3b3f707f38259e681465605bffd86";
+
+            adContainer.appendChild(script);
+            adContainer.appendChild(div);
+
+            // Insert after the second paragraph for better visibility and SEO safety
+            const paragraphs = articleBody.querySelectorAll('p');
+            if (paragraphs.length >= 2) {
+                paragraphs[1].insertAdjacentElement('afterend', adContainer);
+            } else {
+                articleBody.appendChild(adContainer);
+            }
+        }
     }
 };
 
-// AUTO-TRIGGER ADS (Will load Start Ad immediately)
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => utils.triggerAds());
-} else {
-    // If not on a result page (just loaded), this will just load Start Ad
+// AUTO-TRIGGER
+document.addEventListener('DOMContentLoaded', () => {
     utils.triggerAds();
-}
+    utils.initShareBar();
+    utils.injectBlogAds();
+});
 
 // Seeded Random (for consistent results based on name)
 // Simple string hash function
