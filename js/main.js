@@ -251,6 +251,47 @@ Try kar aur mujhe bata tera kya result aaya! 👇`;
                 articleBody.appendChild(adContainer);
             }
         }
+    },
+
+    // SMART POP-UNDER (Single Trigger per 24h)
+    injectPopUnder: () => {
+        // 1. Condition: Only on Tool Pages
+        if (!window.location.href.includes('/tools/')) return;
+
+        // 2. Condition: Frequency Cap (24 hours)
+        const lastShown = localStorage.getItem('popunder_shown_ts');
+        const now = Date.now();
+        const oneDay = 24 * 60 * 60 * 1000;
+
+        if (lastShown && (now - parseInt(lastShown) < oneDay)) {
+            console.log("Pop-under capped for user (24h rule).");
+            return;
+        }
+
+        console.log("Initializing Smart Pop-under Listeners...");
+
+        // 3. Trigger Logic: First Genuine Interaction
+        const loadPopUnder = () => {
+            // Remove listeners immediately so it runs ONLY ONCE
+            document.removeEventListener('click', loadPopUnder);
+            document.removeEventListener('focusin', loadPopUnder);
+
+            console.log("User interaction detected -> Injecting Pop-under Script");
+
+            // Inject the script
+            const script = document.createElement('script');
+            script.src = "https://pl28373457.effectivegatecpm.com/4a/4f/8c/4a4f8c94f4b222cfa9414d68637c2791.js";
+            // script.async = true; // Usually pop-unders need valid execution flow, but async is safer for perf
+            document.body.appendChild(script);
+
+            // Mark as shown
+            localStorage.setItem('popunder_shown_ts', now.toString());
+        };
+
+        // Attach to body for broad capture of any first interaction
+        // 'focusin' catches input field taps before full clicks
+        document.addEventListener('click', loadPopUnder, { once: true });
+        document.addEventListener('focusin', loadPopUnder, { once: true });
     }
 };
 
@@ -259,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     utils.triggerAds();
     utils.initShareBar();
     utils.injectBlogAds();
+    utils.injectPopUnder();
 });
 
 // Seeded Random (for consistent results based on name)
