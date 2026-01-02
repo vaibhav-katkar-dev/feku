@@ -107,6 +107,27 @@ const utils = {
         }
     },
 
+    // Share on Snapchat (Copy + Open App)
+    shareSnapchat: () => {
+        const text = `🔥 Bro! Check this out! Results are crazy! 👻\n\n${window.location.href}`;
+        // 1. Try Native Share
+        if (navigator.share) {
+            navigator.share({
+                title: 'Viral Tool',
+                text: text,
+                url: window.location.href
+            }).catch(console.error);
+        } else {
+            // 2. Fallback
+            navigator.clipboard.writeText(text).then(() => {
+                alert("👻 Link Copied!\n\nPaste this in Snapchat to your Streaks! 🔥");
+                setTimeout(() => {
+                    window.location.href = "snapchat://";
+                }, 500);
+            });
+        }
+    },
+
     // SAFE AD MANAGER
     triggerAds: () => {
         console.log("Initializing Ad Strategy: Start, Primary Top, Secondary Native, Push Bottom");
@@ -169,27 +190,8 @@ const utils = {
             primaryContainer.appendChild(bannerDiv);
         }
 
-        // 2. SECONDARY NATIVE BANNER (Below Result)
-        const secondaryContainer = document.getElementById('ad-secondary');
-        if (secondaryContainer && !secondaryContainer.hasChildNodes()) {
-            console.log("Injecting Secondary Native...");
-            const nativeDiv = document.createElement('div');
-            nativeDiv.className = 'ad-native';
-            nativeDiv.style.margin = '20px auto 0 auto';
-            nativeDiv.style.textAlign = 'center';
-
-            const nativeScript = document.createElement('script');
-            nativeScript.async = true;
-            nativeScript.dataset.cfasync = "false";
-            nativeScript.src = "https://pl28318610.effectivegatecpm.com/aaa3b3f707f38259e681465605bffd86/invoke.js";
-
-            const nativeContainer = document.createElement('div');
-            nativeContainer.id = "container-aaa3b3f707f38259e681465605bffd86";
-
-            nativeDiv.appendChild(nativeScript);
-            nativeDiv.appendChild(nativeContainer);
-            secondaryContainer.appendChild(nativeDiv);
-        }
+        // 2. SECONDARY NATIVE BANNER (REMOVED)
+        // User requested removal for cleaner UI.
 
         // 3. PUSH NOTIFICATION
         // Now hardcoded in HTML for better reliability.
@@ -204,33 +206,6 @@ const utils = {
             setTimeout(() => {
                 resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 800);
-        }
-    },
-
-    // Floating Share Bar Control
-    initShareBar: () => {
-        const shareBar = document.querySelector('.fixed-share-bar');
-        if (shareBar) {
-            // Ensure it's hidden initially
-            shareBar.style.display = 'none';
-            shareBar.style.opacity = '0';
-            shareBar.style.transition = 'opacity 0.5s ease-in-out';
-
-            // Show after 3 seconds
-            setTimeout(() => {
-                shareBar.style.display = 'flex';
-                // Trigger reflow for transition
-                shareBar.offsetHeight;
-                shareBar.style.opacity = '1';
-
-                // Hide after another 10 seconds (total 13s)
-                setTimeout(() => {
-                    shareBar.style.opacity = '0';
-                    setTimeout(() => {
-                        shareBar.style.display = 'none';
-                    }, 500);
-                }, 10000);
-            }, 3000);
         }
     },
 
@@ -314,7 +289,6 @@ const utils = {
 // AUTO-TRIGGER
 document.addEventListener('DOMContentLoaded', () => {
     utils.triggerAds();
-    utils.initShareBar();
     utils.injectBlogAds();
     utils.injectPopUnder();
 });

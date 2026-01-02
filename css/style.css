@@ -408,6 +408,14 @@ select {
     box-shadow: 0 4px 10px rgba(225, 48, 108, 0.3);
 }
 
+.share-btn.snapchat {
+    background: #FFFC00;
+    color: black;
+    box-shadow: 0 4px 10px rgba(230, 227, 0, 0.4);
+    text-shadow: none;
+    /* Black text usually doesn't need shadow */
+}
+
 .share-btn.copy {
     background: #636e72;
     color: white;
