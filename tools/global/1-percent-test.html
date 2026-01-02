@@ -59,7 +59,7 @@
                 <div class="share-section">
                     <button class="share-btn whatsapp" onclick="shareResult()">Share Score</button>
                     <button class="share-btn facebook" onclick="shareResult()">📘 Facebook</button>
-                    <button class="share-btn twitter" onclick="shareResult()">🐦 Twitter</button>
+                    <button class="share-btn telegram" onclick="shareResult('telegram')">✈️ Telegram</button>
                     <button class="share-btn instagram" onclick="utils.shareInstagram()">📸 Instagram</button>
                     <button class="share-btn copy" onclick="utils.copyLink()">🔗 Copy Link</button>
                 </div>
@@ -103,9 +103,14 @@
             document.getElementById('result').classList.add('show');
         }
 
-        function shareResult() {
+        function shareResult(platform) {
             const t = document.getElementById('resTitle').textContent;
-            utils.shareWhatsApp(`I took the 1% Test and I ${t} Try it: `);
+            
+            if (platform === 'telegram') {
+                utils.shareTelegram(`I took the 1% Test and I ${t} Try it: `);
+            } else {
+                utils.shareWhatsApp(`I took the 1% Test and I ${t} Try it: `);
+            }
         }
     </script>
 

@@ -69,6 +69,14 @@ const utils = {
         window.open(shareUrl, '_blank', 'width=600,height=400');
     },
 
+    // Share on Telegram
+    shareTelegram: (text) => {
+        const url = encodeURIComponent(window.location.href);
+        const viralText = `🤯 *OMG! Look at this!* \n\n${text}\n\n👇 Check it out here:`;
+        const shareUrl = `https://t.me/share/url?url=${url}&text=${encodeURIComponent(viralText)}`;
+        window.open(shareUrl, '_blank');
+    },
+
     // Share on Instagram (Viral copy + open app)
     shareInstagram: () => {
         // User-to-user style message with link

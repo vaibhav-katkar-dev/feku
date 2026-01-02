@@ -127,7 +127,7 @@
                 <div class="share-section">
                     <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
                     <button class="share-btn facebook" onclick="shareResult()">📘 Facebook</button>
-                    <button class="share-btn twitter" onclick="shareResult()">🐦 Twitter</button>
+                    <button class="share-btn telegram" onclick="shareResult('telegram')">✈️ Telegram</button>
                     <button class="share-btn instagram" onclick="utils.shareInstagram()">📸 Instagram</button>
                     <button class="share-btn copy" onclick="utils.copyLink()">🔗 Copy Link</button>
                 </div>
@@ -175,9 +175,14 @@
             });
         }
 
-        function shareResult() {
+        function shareResult(platform) {
             const name = document.getElementById('crushName').textContent;
-            utils.shareWhatsApp(`The site calculated my college crush name is: ${name} ❤️ Check yours: `);
+            
+            if (platform === 'telegram') {
+                utils.shareTelegram(`The site calculated my college crush name is: ${name} ❤️ Check yours: `);
+            } else {
+                utils.shareWhatsApp(`The site calculated my college crush name is: ${name} ❤️ Check yours: `);
+            }
         }
     </script>
 

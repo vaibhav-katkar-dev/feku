@@ -145,16 +145,29 @@ a {
     /* Taller */
 }
 
-.card-img-bg {
+/* Image Wrapper for SEO & Optimization (Replaces background-image div) */
+.card-img-wrapper {
     width: 100%;
     height: 60%;
-    background-size: cover;
-    background-position: center;
     position: relative;
+    overflow: hidden;
 }
 
-/* Gradient Overlay for text readability on images if needed */
-.card-img-bg::after {
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-wrapper img {
+    transform: scale(1.1);
+    /* Zoom effect on hover */
+}
+
+/* Gradient Overlay */
+.card-img-wrapper::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -162,6 +175,7 @@ a {
     width: 100%;
     height: 50%;
     background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+    pointer-events: none;
 }
 
 .card-content {
@@ -380,6 +394,12 @@ select {
     background: #1DA1F2;
     color: white;
     box-shadow: 0 4px 10px rgba(29, 161, 242, 0.3);
+}
+
+.share-btn.telegram {
+    background: #0088cc;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
 }
 
 .share-btn.instagram {

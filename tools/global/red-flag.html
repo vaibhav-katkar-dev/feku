@@ -65,7 +65,7 @@
                 <div class="share-section">
                     <button class="share-btn whatsapp" onclick="shareResult()">Share Flag</button>
                     <button class="share-btn facebook" onclick="shareResult()">📘 Facebook</button>
-                    <button class="share-btn twitter" onclick="shareResult()">🐦 Twitter</button>
+                    <button class="share-btn telegram" onclick="shareResult('telegram')">✈️ Telegram</button>
                     <button class="share-btn instagram" onclick="utils.shareInstagram()">📸 Instagram</button>
                     <button class="share-btn copy" onclick="utils.copyLink()">🔗 Copy Link</button>
                 </div>
@@ -95,9 +95,14 @@
             });
         }
 
-        function shareResult() {
+        function shareResult(platform) {
             const f = document.getElementById('flag').textContent;
-            utils.shareWhatsApp(`My Toxic Red Flag is: ${f} Check yours: `);
+            
+            if (platform === 'telegram') {
+                utils.shareTelegram(`My Toxic Red Flag is: ${f} Check yours: `);
+            } else {
+                utils.shareWhatsApp(`My Toxic Red Flag is: ${f} Check yours: `);
+            }
         }
     </script>
 
