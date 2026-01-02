@@ -352,26 +352,90 @@ select {
 }
 
 /* Tool Share Buttons */
+/* Tool Share Buttons (Compact Grid) */
 .share-section {
     margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 2 Columns */
+    gap: 10px;
 }
 
 .share-btn {
     width: 100%;
-    padding: 12px;
+    padding: 10px 5px;
+    /* Smaller padding */
     border: none;
-    border-radius: 10px;
-    font-weight: bold;
+    border-radius: 8px;
+    /* Slightly tighter radius */
+    font-weight: 600;
+    /* Less heavy */
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    /* Compact font */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    transition: transform 0.2s;
+    gap: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Make WhatsApp prominence? maybe full width? User said "too wide", so maybe not. */
+/* Let's keep them all equal for now, or span WhatsApp 2 cols if desired. */
+/* If user wants "short", equal grid is best. */
+
+.share-btn:active {
+    transform: scale(0.95);
+}
+
+/* Result Box Styling (Clear & Attractive) */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+        transform: scale(1);
+        border-color: #6c5ce7;
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(108, 92, 231, 0.6);
+        transform: scale(1.02);
+        border-color: #a29bfe;
+    }
+
+    100% {
+        box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+        transform: scale(1);
+        border-color: #6c5ce7;
+    }
+}
+
+.result-value {
+    display: inline-block;
+    padding: 30px 40px;
+
+    /* Crystal Clear White Background */
+    /* background: #ffffff; */
+
+    /* High Contrast Text */
+    color: #000000 !important;
+    font-size: 2.2rem;
+    /* Larger and clearer */
+    font-weight: 800;
+    line-height: 1.2;
+
+    /* Premium Border & Rounding */
+    border-radius: 20px;
+    border: 4px solid #6c5ce7;
+    margin: 20px 0;
+
+    /* Clean Glow */
+    animation: pulseGlow 2s infinite ease-in-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    /* Visibility Safety */
+    position: relative;
+    z-index: 10;
+    overflow: visible;
 }
 
 .share-btn:active {
@@ -551,4 +615,56 @@ select {
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+/* Result Highlight Animation */
+@keyframes highlightText {
+    0% {
+        transform: scale(1);
+        color: var(--text-main);
+    }
+
+    50% {
+        transform: scale(1.1);
+        color: var(--primary);
+    }
+
+    100% {
+        transform: scale(1);
+        color: var(--text-main);
+    }
+}
+
+.highlight-pulse {
+    animation: highlightText 0.6s ease-in-out;
+}
+
+/* Trending Tools Animation */
+@keyframes gentleBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.trend-card {
+    transition: transform 0.2s;
+    animation: gentleBounce 3s infinite ease-in-out;
+}
+
+.trend-card:nth-child(even) {
+    animation-delay: 1.5s;
+    /* Staggered animation */
+}
+
+.trend-card:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    animation: none;
+    /* Stop bounce on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }

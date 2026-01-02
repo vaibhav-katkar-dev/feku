@@ -40,7 +40,7 @@
 
         <div class="tool-container">
             <!-- Ad visible on load -->
-            <div id="ad-start" style="min-height:260px; margin-bottom:20px; text-align:center;" class="ad-slot"></div>
+            <div id="ad-start" style="margin-bottom:20px; text-align:center;" class="ad-slot"></div>
             <div id="inputForm">
                 <div class="input-group">
                     <label>Enter Your First Name</label>
@@ -58,7 +58,7 @@
 
             <div id="result" class="result-box">
             <!-- Primary Ad (300x250) -->
-            <div id="ad-primary" style="min-height:260px; margin-bottom:15px;" class="ad-slot"></div>
+            <div id="ad-primary" style="margin-bottom:15px;" class="ad-slot"></div>
                 <h2>The Result:</h2>
                 <h3 id="displayName" style="margin-top: 10px; color: #636e72;"></h3>
                 <div class="result-value" id="rarityValue"></div>
@@ -69,9 +69,9 @@
                     <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
                     <button class="share-btn facebook" onclick="shareResult()">📘 Facebook</button>
                     <button class="share-btn telegram" onclick="shareResult('telegram')">✈️ Telegram</button>
-                    <button class="share-btn instagram" onclick="utils.shareInstagram()">📸 Instagram</button>
-                    <button class="share-btn snapchat" onclick="utils.shareSnapchat()">👻 Snapchat</button>
-                    <button class="share-btn copy" onclick="utils.copyLink()">🔗 Copy Link</button>
+                    <button class="share-btn instagram" onclick="utils.highlightResult(); utils.shareInstagram()">📸 Instagram</button>
+                    <button class="share-btn snapchat" onclick="utils.highlightResult(); utils.shareSnapchat()">👻 Snapchat</button>
+                    <button class="share-btn copy" onclick="utils.highlightResult(); utils.copyLink()">🔗 Copy Link</button>
                 </div>
                 <button class="action-btn" onclick="location.reload()"
                     style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Another</button>
@@ -118,6 +118,7 @@
         }
 
         function shareResult(platform) {
+            utils.highlightResult();
             const val = document.getElementById('rarityValue').textContent;
             
             if (platform === 'telegram') {

@@ -130,10 +130,9 @@ const utils = {
 
     // SAFE AD MANAGER
     triggerAds: () => {
-        console.log("Initializing Ad Strategy: Start, Primary Top, Secondary Native, Push Bottom");
+        console.log("Initializing Ad Strategy: Start, Primary Top, Push Bottom");
 
         // 0. START AD (Immediate Load)
-        // This appears above the tool input form on load
         const startContainer = document.getElementById('ad-start');
         if (startContainer && !startContainer.hasChildNodes()) {
             console.log("Injecting Start Banner...");
@@ -161,11 +160,10 @@ const utils = {
             startContainer.appendChild(bannerDiv);
         }
 
-        // 1. PRIMARY BANNER (Above Result / Top of Result Box)
-        // This triggers when result is shown
+        // 1. PRIMARY ADS (Above Result)
         const primaryContainer = document.getElementById('ad-primary');
         if (primaryContainer && !primaryContainer.hasChildNodes()) {
-            console.log("Injecting Primary Banner (Result)...");
+            console.log("Injecting Primary Banner...");
             const bannerDiv = document.createElement('div');
             bannerDiv.className = 'ad-banner';
             bannerDiv.style.margin = '0 auto 20px auto';
@@ -197,14 +195,15 @@ const utils = {
         // Now hardcoded in HTML for better reliability.
         // Script: bb70a4d84f951cf3190d767b9e8197f5.js
 
-        // SAFE AUTO-SCROLL (To Primary Ad)
+        // 3. AUTO-SCROLL (Improved Visibility)
         const resultBox = document.getElementById('result');
         // Only scroll if result is clearly visible and not just hidden in DOM
         // Our CSS uses 'show' class to display result
         // We check if it has 'show' OR if we just injected primary container which means user just completed action
         if (resultBox && (resultBox.classList.contains('show') || resultBox.style.display === 'block')) {
             setTimeout(() => {
-                resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Scroll to center to show Result AND hint at "More Tools" below
+                resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 800);
         }
     },
@@ -244,12 +243,28 @@ const utils = {
         }
     },
 
-    // SMART POP-UNDER (Single Trigger per 24h)
+    // RESULT HIGHLIGHTER (Visual feedback on share)
+    highlightResult: () => {
+        const resVal = document.querySelector('.result-value');
+        if (resVal) {
+            resVal.classList.remove('highlight-pulse');
+            void resVal.offsetWidth; // Trigger reflow
+            resVal.classList.add('highlight-pulse');
+        }
+    },
+
+    // SMART POP-UNDER (Strict Limit: 1 per 24h AND 1 per Session)
     injectPopUnder: () => {
         // 1. Condition: Only on Tool Pages
         if (!window.location.href.includes('/tools/')) return;
 
-        // 2. Condition: Frequency Cap (24 hours)
+        // 2. Condition: Session Guard (Prevent Loop)
+        if (sessionStorage.getItem('popunder_session_active')) {
+            console.log("Pop-under skipped (Active Session Guard).");
+            return;
+        }
+
+        // 3. Condition: Frequency Cap (24 hours)
         const lastShown = localStorage.getItem('popunder_shown_ts');
         const now = Date.now();
         const oneDay = 24 * 60 * 60 * 1000;
@@ -261,26 +276,27 @@ const utils = {
 
         console.log("Initializing Smart Pop-under Listeners...");
 
-        // 3. Trigger Logic: First Genuine Interaction
+        // 4. Trigger Logic: First Genuine Interaction
         const loadPopUnder = () => {
-            // Remove listeners immediately so it runs ONLY ONCE
+            // Remove listeners immediately
             document.removeEventListener('click', loadPopUnder);
             document.removeEventListener('focusin', loadPopUnder);
+
+            // Double Check (Race Condition)
+            if (sessionStorage.getItem('popunder_session_active')) return;
+            sessionStorage.setItem('popunder_session_active', 'true');
 
             console.log("User interaction detected -> Injecting Pop-under Script");
 
             // Inject the script
             const script = document.createElement('script');
             script.src = "https://pl28373457.effectivegatecpm.com/4a/4f/8c/4a4f8c94f4b222cfa9414d68637c2791.js";
-            // script.async = true; // Usually pop-unders need valid execution flow, but async is safer for perf
             document.body.appendChild(script);
 
-            // Mark as shown
+            // Mark as shown globally
             localStorage.setItem('popunder_shown_ts', now.toString());
         };
 
-        // Attach to body for broad capture of any first interaction
-        // 'focusin' catches input field taps before full clicks
         document.addEventListener('click', loadPopUnder, { once: true });
         document.addEventListener('focusin', loadPopUnder, { once: true });
     }

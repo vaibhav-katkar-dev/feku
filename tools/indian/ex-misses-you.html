@@ -39,7 +39,7 @@
 
         <div class="tool-container">
             <!-- Ad visible on load -->
-            <div id="ad-start" style="min-height:260px; margin-bottom:20px; text-align:center;" class="ad-slot"></div>
+            <div id="ad-start" style="margin-bottom:20px; text-align:center;" class="ad-slot"></div>
             <div id="form">
                 <div class="input-group">
                     <label>Ex's Name (We keep it secret)</label>
@@ -66,7 +66,7 @@
 
             <div id="result" class="result-box">
             <!-- Primary Ad (300x250) -->
-            <div id="ad-primary" style="min-height:260px; margin-bottom:15px;" class="ad-slot"></div>
+            <div id="ad-primary" style="margin-bottom:15px;" class="ad-slot"></div>
                 <h2>Result:</h2>
                 <div class="result-value" id="missVal"></div>
                 <p id="advice"></p>
@@ -76,12 +76,54 @@
                     <button class="share-btn whatsapp" onclick="shareResult()">Share WhatsApp</button>
                     <button class="share-btn facebook" onclick="shareResult()">📘 Facebook</button>
                     <button class="share-btn telegram" onclick="shareResult('telegram')">✈️ Telegram</button>
-                    <button class="share-btn instagram" onclick="utils.shareInstagram()">📸 Instagram</button>
-                    <button class="share-btn snapchat" onclick="utils.shareSnapchat()">👻 Snapchat</button>
-                    <button class="share-btn copy" onclick="utils.copyLink()">🔗 Copy Link</button>
+                    <button class="share-btn instagram" onclick="utils.highlightResult(); utils.shareInstagram()">📸 Instagram</button>
+                    <button class="share-btn snapchat" onclick="utils.highlightResult(); utils.shareSnapchat()">👻 Snapchat</button>
+                    <button class="share-btn copy" onclick="utils.highlightResult(); utils.copyLink()">🔗 Copy Link</button>
                 </div>
                 <button class="action-btn" onclick="location.reload()"
                     style="margin-top: 20px; background: #dfe6e9; color: #333;">Check Again</button>
+                <!-- More Viral Tools (High Retention) -->
+                <div class="trending-tools-section" style="margin-top: 40px; border-top: 2px dashed #dfe6e9; padding-top: 30px;">
+                    <h3 style="color: #2d3436; margin-bottom: 20px;">🔥 Trending Now</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
+                        
+                        <a href="../global/wait-10-seconds.html" class="trend-card" style="background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; display: flex; align-items: center; border: 1px solid #eee;">
+                            <span style="font-size: 1.5rem; margin-right: 10px;">😈</span>
+                            <div>
+                                <div style="font-weight: 800; font-size: 0.9rem; color: #2d3436;">Wait 10s</div>
+                                <div style="font-size: 0.7rem; color: #636e72;">Viral Challenge</div>
+                            </div>
+                        </a>
+
+                        <a href="../indian/college-crush.html" class="trend-card" style="background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; display: flex; align-items: center; border: 1px solid #eee;">
+                            <span style="font-size: 1.5rem; margin-right: 10px;">❤️</span>
+                            <div>
+                                <div style="font-weight: 800; font-size: 0.9rem; color: #2d3436;">Crush Name</div>
+                                <div style="font-size: 0.7rem; color: #636e72;">Love Calculator</div>
+                            </div>
+                        </a>
+
+                        <a href="../global/future-message.html" class="trend-card" style="background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; display: flex; align-items: center; border: 1px solid #eee;">
+                            <span style="font-size: 1.5rem; margin-right: 10px;">✉️</span>
+                            <div>
+                                <div style="font-weight: 800; font-size: 0.9rem; color: #2d3436;">Future Msg</div>
+                                <div style="font-size: 0.7rem; color: #636e72;">From 2035</div>
+                            </div>
+                        </a>
+
+                        <a href="../indian/log-kya-kahenge.html" class="trend-card" style="background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; display: flex; align-items: center; border: 1px solid #eee;">
+                            <span style="font-size: 1.5rem; margin-right: 10px;">😶‍🌫️</span>
+                            <div>
+                                <div style="font-weight: 800; font-size: 0.9rem; color: #2d3436;">Log Kya Kahenge</div>
+                                <div style="font-size: 0.7rem; color: #636e72;">Society Meter</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <a href="../../index.html" class="action-btn" style="background: #2d3436; font-size: 1rem; padding: 12px;">View All Tools →</a>
+                    </div>
+                </div>
+
             </div>
 
             
@@ -107,6 +149,7 @@
         }
 
         function shareResult(platform) {
+            utils.highlightResult();
             const res = document.getElementById('missVal').textContent;
             
             if (platform === 'telegram') {
