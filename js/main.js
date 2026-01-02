@@ -77,26 +77,34 @@ const utils = {
         window.open(shareUrl, '_blank');
     },
 
-    // Share on Instagram (Viral copy + open app)
+    // Share on Instagram (Direct Message Priority)
     shareInstagram: () => {
-        // User-to-user style message with link
-        const viralCaption = `🤯 Bro, maine yeh try kiya aur MIND BLOWN! 🔥
+        const text = `🤯 Bro, maine yeh try kiya aur MIND BLOWN! 🔥\n\n😱 Results itne accurate hain ki dar lag gaya! \n\n⚠️ WARNING: Ek baar shuru kiya toh band nahi hota! \n\nTry kar aur mujhe bata tera kya result aaya! 👇`;
+        const url = window.location.href;
 
-😱 Results itne accurate hain ki dar lag gaya! 
+        // 1. Try Native Web Share (Works best on Mobile for IG Direct)
+        if (navigator.share) {
+            navigator.share({
+                title: 'Feku.me - Viral Fun!',
+                text: text,
+                url: url
+            }).catch((err) => {
+                console.error("Share failed:", err);
+                // Fallback if user cancels or error, just copy
+                // Optional: We could call the fallback logic here too, but usually cancel is intentional.
+            });
+        } else {
+            // 2. Fallback: Copy to Clipboard & Open Instagram Direct
+            navigator.clipboard.writeText(`${text}\n\n${url}`).then(() => {
+                alert("📋 Text & Link COPIED!\n\n📨 Opening Instagram...\n\n👉 Go to DMs (Messages)\n👉 Select a Friend\n👉 PASTE & Send! 🚀");
 
-⚠️ WARNING: Ek baar shuru kiya toh band nahi hota! 
-
-Try kar aur mujhe bata tera kya result aaya! 👇`;
-
-        // Copy link + caption together
-        navigator.clipboard.writeText(`${viralCaption}\n\n${window.location.href}`).then(() => {
-            alert("� Link + Caption COPIED!\n\n📸 Next Steps:\n1️⃣ Open Instagram\n2️⃣ Post a Story or DM to friends\n3️⃣ Paste (Link already included!)\n\n� They'll be HOOKED! 🎯");
-
-            // Try to open Instagram
-            setTimeout(() => {
-                window.open('instagram://story-camera', '_blank');
-            }, 500);
-        });
+                setTimeout(() => {
+                    // Try to open Instagram Direct (Inbox)
+                    // Using window.location.href usually works better for deep links to apps
+                    window.location.href = "instagram://direct";
+                }, 500);
+            });
+        }
     },
 
     // SAFE AD MANAGER
