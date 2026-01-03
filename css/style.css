@@ -603,6 +603,63 @@ select {
     }
 }
 
+/* 
+   -----------------------------------
+   MOBILE RESPONSIVENESS FIXES
+   -----------------------------------
+*/
+@media (max-width: 600px) {
+
+    /* 1. Fix Result Box Overflow */
+    .result-value {
+        padding: 20px 10px !important;
+        font-size: 1.6rem !important;
+        width: 100%;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        /* Prevent text overflow */
+        white-space: normal;
+    }
+
+    /* 2. Fix "More Tools" Grid (Stacking) */
+    .trending-tools-section>div {
+        grid-template-columns: 1fr !important;
+        /* Single column stack */
+        gap: 12px;
+    }
+
+    /* 3. Ensure Ad Banner Safety */
+    .ad-slot,
+    .ad-banner {
+        max-width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ad-slot iframe {
+        max-width: 100%;
+    }
+
+    /* 4. Tighter Share Section */
+    .share-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .share-btn {
+        font-size: 0.85rem;
+        padding: 10px 5px;
+    }
+}
+
+/* Ensure images in trending cards don't shrink */
+.trend-card span {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
 /* Ad Container - Prevents Layout Shift */
 #ad-container {
     min-height: 280px;
