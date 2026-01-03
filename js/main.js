@@ -302,12 +302,25 @@ const utils = {
     }
 };
 
-// AUTO-TRIGGER
-document.addEventListener('DOMContentLoaded', () => {
-    utils.triggerAds();
-    utils.injectBlogAds();
+// AUTO-TRIGGER (Optimized for Speed)
+const initApp = () => {
+    // 1. Immediate Interaction Handlers (Lightweight)
     utils.injectPopUnder();
-});
+
+    // 2. Defer Heavy Ads for fast 'First Contentful Paint'
+    // This ensures the user sees the tool immediately, and ads load 600ms later.
+    // Impact on Earnings: Negligible. Impact on Speed: Huge 🚀
+    setTimeout(() => {
+        utils.triggerAds();
+        utils.injectBlogAds();
+    }, 600);
+};
+
+if (document.readyState !== 'loading') {
+    initApp();
+} else {
+    document.addEventListener('DOMContentLoaded', initApp);
+}
 
 // Seeded Random (for consistent results based on name)
 // Simple string hash function
