@@ -1,106 +1,125 @@
-# 🎲 Feku.me - Viral Fun Tools & Predictions
+<div align="center">
+  <a href="https://feku.me">
+    <img src="https://feku.me/images/logo.svg" alt="Feku Logo" width="120" height="120">
+  </a>
 
-![Status](https://img.shields.io/website?url=https%3A%2F%2Ffeku.me)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Tech Stack](https://img.shields.io/badge/stack-HTML%20%7C%20CSS%20%7C%20JS%20%7C%20Python-orange)
+  # 🎲 Feku.me
+  
+  <p><strong>The Internet's Favorite Viral Fun Tools & Predictions</strong></p>
 
-Welcome to **Feku.me**, the internet's favorite destination for viral fun tools, psychological tests, and hilarious predictions! 🚀
+  <p>
+    <a href="https://feku.me"><strong>🔴 LIVE DEMO: https://feku.me</strong></a>
+  </p>
 
-This project is a collection of interactive web tools designed for maximum shareability and engagement. From testing your patience to predicting your future net worth, Feku.me has it all.
+  <p>
+    <a href="https://github.com/vaibhav-katkar-dev/feku/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/vaibhav-katkar-dev/feku/issues">Request Feature</a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Ffeku.me&style=for-the-badge&label=Status" alt="Website Status" />
+    <img src="https://img.shields.io/github/license/vaibhav-katkar-dev/feku?style=for-the-badge&color=blue" alt="License" />
+    <img src="https://img.shields.io/badge/Stack-HTML5%20%7C%20CSS3%20%7C%20JS-orange?style=for-the-badge" alt="Tech Stack" />
+  </p>
+</div>
+
+<br />
+
+## 📋 About The Project
+
+**Feku.me** is a collection of highly engaging, interactive, and "viral-ready" web tools. From checking your "brain age" to predicting when you'll get married, these tools are designed for maximum shareability on social media.
 
 ---
 
-## 🌟 Features & Tools
-
-We host a variety of tools categorized for global and regional (Indian) audiences.
+## 🚀 Live Links & Features 
 
 ### 🌍 Global Viral Tools
-These tools are designed for everyone, everywhere!
+*Fun for everyone, anywhere in the world.*
 
-*   **⏳ I Dare You to Wait 10 Seconds**: A patience test that 90% of people fail. (`tools/global/wait-10-seconds.html`)
-*   **✉️ Future Message Generator**: Receive a mysterious text from your 2035 self. (`tools/global/future-message.html`)
-*   **🧠 Brain Age Test**: Is your brain 18 or 80? Check your cognitive age. (`tools/global/brain-age.html`)
-*   **🏆 The 1% Club**: Logic puzzles that only the top 1% can solve. (`tools/global/1-percent-test.html`)
-*   **🚩 Red Flag Detector**: Scan yourself to find your toxic traits. (`tools/global/red-flag.html`)
-*   **🔍 Rare Name Check**: Discover how unique your name really is. (`tools/global/rare-name.html`)
-*   **😳 Secret Personality**: Reveal what people secretly think about you. (`tools/global/personality-type.html`)
+| 🔗 **Live Link (Click to Play)** | Tool Name | Description |
+|:--- |:--- |:--- |
+| [**Wait 10 Seconds Test**](https://feku.me/tools/global/wait-10-seconds.html) | **Wait 10 Seconds** | A patience test that 90% of people fail. |
+| [**Future Message**](https://feku.me/tools/global/future-message.html) | **Future Message** | Receive a mysterious text from your 2035 self. |
+| [**Brain Age Test**](https://feku.me/tools/global/brain-age.html) | **Brain Age Test** | Is your brain 18 or 80? Check your cognitive age. |
+| [**The 1% Club**](https://feku.me/tools/global/1-percent-test.html) | **The 1% Club** | Logic puzzles that only the top 1% can solve. |
+| [**Red Flag Detector**](https://feku.me/tools/global/red-flag.html) | **Red Flag Detector** | Scan yourself to find your toxic traits. |
+| [**Rare Name Check**](https://feku.me/tools/global/rare-name.html) | **Rare Name Check** | Discover how unique your name really is. |
+| [**Secret Personality**](https://feku.me/tools/global/personality-type.html) | **Secret Personality** | Reveal what people secretly think about you. |
+| [**Global Tools Home**](https://feku.me/tools/global/index.html) | **Directory** | Main list of all global tools. |
 
 ### 🇮🇳 Desi Favorites (Indian Context)
-Tools tailored with a local flavor for our Desi users!
+*Tools tailored with a local flavor for our Desi users.*
 
-*   **❤️ College Crush Calculator**: Authentic vibration analysis to check compatibility. (`tools/indian/college-crush.html`)
-*   **😶‍🌫️ Log Kya Kahenge Meter**: Calculate your "Society Pressure" score. (`tools/indian/log-kya-kahenge.html`)
-*   **💍 Shaadi Kab Hogi?**: AI predicts your wedding year! (`tools/indian/shaadi-kab-hogi.html`)
-*   **👀 Maa Ka Favorite?**: Are you a *Raja Beta* or *Kaamchor*? (`tools/indian/maa-ka-favorite.html`)
-*   **💰 Kitna Paisa?**: Calculate your future net worth. (`tools/indian/kitna-paisa.html`)
-*   **🤝 Friendship Test**: A "Snake Detector" for your friend group. (`tools/indian/friendship-test.html`)
-*   **💔 Ex Misses You?**: Does he/she still think about you? (`tools/indian/ex-misses-you.html`)
+| 🔗 **Live Link (Click to Play)** | Tool Name | Description |
+|:--- |:--- |:--- |
+| [**Log Kya Kahenge?**](https://feku.me/tools/indian/log-kya-kahenge.html) | **Society Meter** | Calculate your "Society Pressure" score. |
+| [**College Crush**](https://feku.me/tools/indian/college-crush.html) | **Crush Calculator** | Authentic vibration analysis to check compatibility. |
+| [**Shaadi Kab Hogi?**](https://feku.me/tools/indian/shaadi-kab-hogi.html) | **Wedding Predictor** | AI predicts your wedding year! |
+| [**Maa Ka Favorite?**](https://feku.me/tools/indian/maa-ka-favorite.html) | **Mom's Fav** | Are you a *Raja Beta* or *Kaamchor*? |
+| [**Kitna Paisa?**](https://feku.me/tools/indian/kitna-paisa.html) | **Net Worth** | Calculate your future net worth. |
+| [**Friendship Test**](https://feku.me/tools/indian/friendship-test.html) | **Snake Detector** | A "Snake Detector" for your friend group. |
+| [**Ex Misses You?**](https://feku.me/tools/indian/ex-misses-you.html) | **Ex Calculator** | Does he/she still think about you? |
+| [**Indian Tools Home**](https://feku.me/tools/indian/index.html) | **Directory** | Main list of Indian tools. |
 
-### 📰 Blog
-*   Insightful articles on psychology, viral trends, and behind-the-scenes of our tools.
-*   Located in `blog/` directory.
+---
+
+## 📰 Blog Highlights
+
+Read our latest viral articles and psychology breakdowns:
+
+*   **[Read All Blogs](https://feku.me/blog.html)**
+*   [**Log Kya Kahenge: The Society Meter**](https://feku.me/blog/log-kya-kahenge-society.html)
+*   [How College Crush Calculators Work](https://feku.me/blog/how-college-crush-calculators-work.html)
+*   [Why People Love Predictions](https://feku.me/blog/why-people-love-fun-prediction-websites.html)
+*   [Top 10 Viral Fun Tools for WhatsApp](https://feku.me/blog/top-10-viral-fun-tools-whatsapp.html)
+*   [The 1% Club Challenge Explained](https://feku.me/blog/one-percent-club-challenge.html)
+*   [What Is Your Red Flag? (Prank)](https://feku.me/blog/red-flag-scanner-prank.html)
 
 ---
 
 ## 🛠️ Tech Stack
 
-This project is built with simplicity and performance in mind.
+This project is built with **Web Fundamentals** to ensure high performance and zero-config deployment.
 
-*   **Frontend**: HTML5, CSS3 (Custom styles in `css/style.css`), Vanilla JavaScript (`js/main.js`).
-*   **Automation**: Python scripts for site maintenance (adding canonicals, updating logos, social bars, etc.).
-*   **Analytics**: Yandex Metrika integration.
-*   **Monetization**: Google AdSense & Adsterra integration.
+*   **HTML5**: Semantic markup for accessibility.
+*   **CSS3**: Custom styling (`css/style.css`) with responsive design.
+*   **JavaScript (Vanilla)**: All logic runs client-side for speed (`js/main.js`).
 
----
-
-## 🚀 Getting Started
-
-Want to run this locally? It's super simple!
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/feku.git
-    cd feku
-    ```
-
-2.  **Open in Browser**
-    Simply open the `index.html` file in your favorite web browser.
-    ```bash
-    # On Windows
-    start index.html
-    ```
-
-    *No complex build steps or NPM installs required!*
+### Folder Structure
+```
+feku/
+├── blog/             # Blog posts HTML files
+├── css/              # Global stylesheets
+├── images/           # Assets and SVGs
+├── js/               # Main JavaScript logic
+├── tools/            # Interactive tools
+│   ├── global/       # Tools for international audience
+│   └── indian/       # Tools for Indian audience
+└── index.html        # Landing page
+```
 
 ---
 
 ## 🤝 Contributing
 
-We love contributions! Whether it's a new fun tool idea, a UI improvement, or a bug fix.
+We welcome contributions! Open to anyone who wants to add a new fun tool or improve existing ones.
 
-1.  **Fork** the project.
-2.  **Create** your feature branch (`git checkout -b feature/AmazingNewTool`).
-3.  **Commit** your changes (`git commit -m 'Add AmazingNewTool'`).
-4.  **Push** to the branch (`git push origin feature/AmazingNewTool`).
-5.  **Open** a Pull Request.
-
-### ideas for Contribution
-*   Add a new "Love Calculator" algorithm.
-*   Improve the animations on result pages.
-*   Optimize images for faster loading.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/NewTool`)
+3.  Commit your Changes (`git commit -m 'Add some NewTool'`)
+4.  Push to the Branch (`git push origin feature/NewTool`)
+5.  Open a Pull Request
 
 ---
 
-## 📜 License
+## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-## 📬 Contact
-
-Project Link: [https://feku.me](https://feku.me)
-
----
-
-*Made with ❤️ and a bit of sarcasm by the Feku Team.*
+<div align="center">
+  <p>Made with ❤️ by the Feku Team</p>
+  <a href="https://feku.me"><strong>www.feku.me</strong></a>
+</div>
